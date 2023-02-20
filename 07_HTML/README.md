@@ -10,9 +10,9 @@ Frontend merupakan sebuah bagian dari website yang membuat tampilan yang menarik
 - Mempublikasikan halaman website secara online
 
 ### Dokumentasi HTML
-| <!DOCTYPE html> | Mendefinisikan dokumen ini sebagai HTML5 |
+| !DOCTYPE html | Mendefinisikan dokumen ini sebagai HTML5 |
 | ----------- | ----------- |
-| <html> | Elemen root dari halaman HTML |
-| <head> | Berisi informasi meta tentang dokumen |
-| <title> | Menentukan judul untuk dokumen |
-| <body> | Berisi konten halaman yang terlihat |
+| html | Elemen root dari halaman HTML |
+| head | Berisi informasi meta tentang dokumen |
+| title | Menentukan judul untuk dokumen |
+| body | Berisi konten halaman yang terlihat |
