@@ -10,31 +10,34 @@
     <h1>Create Product</h1>
     <h2>Detail Product</h2>
 
-    <p>Product name : </p>
-    <input type="text" name="" id="">
+    <form>
+        <p>Product name : </p>
+        <input type="text" name="" id="" required>
 
-    <p>Product Category : </p>
-    <select id="nation" name="nation">
-        <option disabled selected value></option>
-        <option value="Electronic">Electronic</option>
-        <option value="Furniture">Furniture</option>
-        <option value="Tools">Tools</option>
-    </select>
+        <p>Product Category : </p>
+        <select id="nation" name="nation" required>
+            <option disabled selected value></option>
+            <option value="Electronic">Electronic</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Tools">Tools</option>
+        </select>
 
-    <p>Product Freshness : </p>
-    <input type="radio" name="" id=""> <label for="">Brand New</label><br/>
-    <input type="radio" name="" id=""> <label for="">Second Hank</label><br/>
-    <input type="radio" name="" id=""> <label for="">Refurbished</label>
+        <p>Product Freshness : </p>
+        <input type="radio" name="" id=""> <label for="">Brand New</label><br/>
+        <input type="radio" name="" id=""> <label for="">Second Hank</label><br/>
+        <input type="radio" name="" id=""> <label for="">Refurbished</label>
+        
+        <p>Image of Product</p><input type="file" name="choose file" id=""><br/>
+        
+        <p>Additional Description</p>
+        <textarea name="" id="" cols="30" rows="10"></textarea required>
+        
+        <p>Product Price : </p>
+        <input type="text" value="$100" disabled required>
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
     
-    <p>Image of Product</p><input type="file" name="choose file" id=""><br/>
-    
-    <p>Additional Description</p>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
-    
-    <p>Product Price : </p>
-    <input type="text" value="$100" disabled>
-    <br>
-    <br>
-    <button>Submit</button>
 </body>
 </html>
