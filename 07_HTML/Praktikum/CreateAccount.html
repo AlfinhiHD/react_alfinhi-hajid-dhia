@@ -20,16 +20,16 @@
     <h2>Detail Form</h2>
     <form>
         <br><label for="fname">First name :</label><br>
-        <input type="text" id="fname" name="fname"><br>
+        <input type="text" id="fname" name="fname" required><br>
         <br><label for="lname">Last name :</label><br>
-        <input type="text" id="lname" name="lname"><br>
+        <input type="text" id="lname" name="lname" required><br>
         <br><label for="uname">Username :</label><br>
-        <input type="text" id="uname" name="uname"><br>
+        <input type="text" id="uname" name="uname" required><br>
         <br><label for="email">Email :</label><br>
-        <input type="email" id="email" name="email"><br>
+        <input type="email" id="email" name="email" required><br>
         
         <p>Gender</p>
-        <input type="radio" id="male" name="gender" value="Male">
+        <input type="radio" id="male" name="gender" value="Male" required>
         <label for="male">Male</label><br>
         <input type="radio" id="female" name="gender" value="Female">
         <label for="female">Female</label><br>
@@ -37,26 +37,26 @@
         <label for="other">Other</label><br>
 
         <br><label for="address">Address</label><br>
-        <input type="text" id="address" name="address"><br>
+        <input type="text" id="address" name="address" required><br>
         <br><label for="address2">Address 2</label><br>
-        <input type="text" id="address2" name="address2"><br>
+        <input type="text" id="address2" name="address2" required><br>
 
         <p>Nationality :</p>
         <label for="nation">Nationality</label><br>
-        <select id="nation" name="nation">
+        <select id="nation" name="nation" required>
             <option disabled selected value></option>
-            <option value="Indonesia">Indonesia</option>
-            <option value="Malaysia">Malaysia</option>
-            <option value="Singapora">Singapore</option>
-            <option value="Thailand">Thailand</option>
+            <option value="Indonesia" name="nation">Indonesia</option>
+            <option value="Malaysia" name="nation">Malaysia</option>
+            <option value="Singapora" name="nation">Singapore</option>
+            <option value="Thailand" name="nation">Thailand</option>
         </select>
 
         <p>Language Spoken</p>
-        <input type="radio" id="bahasa" name="language" value="Bahasa Indonesia">
+        <input type="checkbox" id="bahasa" name="language" value="Bahasa Indonesia">
         <label for="bahasa">Bahasa Indonesia</label><br>
-        <input type="radio" id="english" name="language" value="English">
+        <input type="checkbox" id="english" name="language" value="English">
         <label for="female">English</label><br>
-        <input type="radio" id="other" name="language" value="Other">
+        <input type="checkbox" id="other" name="language" value="Other">
         <label for="other">Other</label><br>
 
         <br><input type="submit" value="Create Account">
