@@ -12,28 +12,28 @@
 
     <form>
         <p>Product name : </p>
-        <input type="text" name="" id="" required>
+        <input type="text" name="" id="" minlength="6" maxlength="50" required>
 
         <p>Product Category : </p>
-        <select id="nation" name="nation" required>
+        <select id="category" name="category" required>
             <option disabled selected value></option>
-            <option value="Electronic">Electronic</option>
-            <option value="Furniture">Furniture</option>
-            <option value="Tools">Tools</option>
+            <option  name="category" value="Electronic">Electronic</option>
+            <option  name="category" value="Furniture">Furniture</option>
+            <option  name="category" value="Tools">Tools</option>
         </select>
 
         <p>Product Freshness : </p>
-        <input type="radio" name="" id=""> <label for="">Brand New</label><br/>
-        <input type="radio" name="" id=""> <label for="">Second Hank</label><br/>
-        <input type="radio" name="" id=""> <label for="">Refurbished</label>
+        <input type="radio" name="freshness" id="new" value="Brand New" required> <label for="new">Brand New</label><br/>
+        <input type="radio" name="freshness" id="second" value="Second Hank"> <label for="second">Second Hank</label><br/>
+        <input type="radio" name="freshness" id="refurbished" value="Refurbished"> <label for="refurbished">Refurbished</label>
         
-        <p>Image of Product</p><input type="file" name="choose file" id=""><br/>
+        <p>Image of Product</p><input type="file" name="choose file" id="" required><br/>
         
         <p>Additional Description</p>
         <textarea name="" id="" cols="30" rows="10"></textarea required>
         
         <p>Product Price : </p>
-        <input type="text" value="$100" disabled required>
+        <input type="number" placeholder="$100" required>
         <br>
         <br>
         <input type="submit" value="Submit">
