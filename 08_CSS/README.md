@@ -8,15 +8,12 @@ Ada 3 cara menambahkan file CSS ke dalam HTML :
 
 - External CSS
 ```
-{
   <link rel="stylesheet" href="main.css">
-}
 ```
 Syntax ini disisipkan ke dalam tag head pada HTML. Format file CSS adalah .css
 
 - Internal CSS
 ```
-{
 <style>
   body {
     background-color: #19355f;
@@ -25,16 +22,14 @@ Syntax ini disisipkan ke dalam tag head pada HTML. Format file CSS adalah .css
     color: #f47523;
     margin-left: 40px;
   }
-}
 </style>
+
 ```
 Syntax ini dapat digunakan di dalam satu file HTML. Didefinisikan di dalam elemen style, di dalam bagian head atau di dalam bagian body.
 
 - Inline CSS 
 ```
-{
   <h1 style="color: #19355f;">Hello World</h1>
-}
 ```
 Syntax ini dapat digunakan untuk elemen tunggal pada HTML. Diprioritaskan untuk menerapkan style yang unik.
 
