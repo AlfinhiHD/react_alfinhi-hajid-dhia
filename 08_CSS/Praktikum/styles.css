@@ -28,7 +28,7 @@ nav {
     font-family: 'Jost', sans-serif;
 }
 
-.hero-container > div > h3 {
+.hero-container > div > p {
     color:rgba(255, 255, 255, 0.6);
     font-size: 24px;
     font-family: 'Jost', sans-serif;
@@ -55,7 +55,7 @@ nav {
     font-weight: 500;
 }
 
-.hero-items span {
+.hero-items > span {
     font-family: 'Jost', sans-serif;
     font-family: 'Open Sans', sans-serif;
     color: #fff;
@@ -65,9 +65,203 @@ nav {
     margin-left: 65px;
 }
 
+span:hover {
+    background-color: #47B2E4;
+    border-radius: 50px;
+    padding: 9px 28.3594px 12px 28px;
+
+}
+
 .hero-items {
     margin-top: 57.8px;
 }
+
+.newsletter {
+    height: 239px;
+    background: #F3F5FA;
+}
+
+.newsletter > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter > div > h3 {
+    color: #37517E;
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.newsletter > div > p {
+    color: #444444;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.newsletter-items {
+    position: relative;
+}
+
+.newsletter-items > input {
+    width: 550px;
+    height: 32.5px;
+    background: #FFFFFF;
+    border: 0;
+    border-radius: 50px;
+}
+
+.newsletter-items > button {
+    background-color: #47B2E4;
+    padding: 6.25px 19px;
+    font-size: 16px;
+    border-radius: 50px;
+    border: 0;
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    position: absolute;
+    right: 0;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #37517E;
+    height: 77px;
+}
+
+footer > span {
+    color:#fff;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+#footer-item1 {
+    margin-left: 93px;
+    margin-right: 840px;
+}
+
+.footer-contents {
+    display: flex;
+    flex-direction: row;
+    width: 1442px;
+    height: 339.19px;
+    background: #FFFFFF;
+    margin-top: 55px;
+}
+
+
+.contents-1 {
+    margin-left: 92px;
+}
+
+.contents-2 {
+    margin-left: 166px;
+}
+
+.contents-3 {
+    margin-left: 203px;
+}
+
+.contents-4 {
+    margin-left: 168px;
+}
+
+.contents-1 > h3 {
+    color: #37517E;
+    font-family: 'Jost';
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.contents-1 > p {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    color: #5E5E5E;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.contents-2 > a {
+    display: flex;
+    color: #777777;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-left: 22px;
+}    
+
+a:hover {
+    color: #37517E;
+}
+
+.contents-2 > h3 {
+    color: #37517E;
+    font-family: 'Jost';
+    font-weight: 700;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.contents-3 > h3 {
+    color: #37517E;
+    font-family: 'Jost';
+    font-weight: 700;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.contents-3 > p {
+    color: #777777;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 15px;
+    margin-left: 22px;
+}
+
+.contents-4 > h3 {
+    color: #37517E;
+    font-family: 'Jost';
+    font-weight: 700;
+    font-size: 16px;
+    margin: 5px;
+    margin-left: 0px;
+}
+
+.contents-4 > p {
+    color: #444444;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.contents-4 > button {
+    width: 36px;
+    height: 36px;
+    background: #47B2E4;
+    border-radius: 18px;
+    border: 0px;
+}
+
+
+
+
 
 
 
