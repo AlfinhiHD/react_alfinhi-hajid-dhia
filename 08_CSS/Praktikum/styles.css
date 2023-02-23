@@ -1,7 +1,73 @@
-.landpage {
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    height: 60px;
+    background-color: #fff;
+}
+
+.hero-container {
+    display: flex;
+    height: 760px;
     background-color: #37517E;
 }
 
-h1 {
-    color : white;
+.hero-container > div {
+    width: 50%;
+    margin-top: 250px;
+    margin-bottom: 201px;
+    padding-left: 94px;
 }
+
+.hero-container > div > h1 {
+    color:#fff;
+    font-size: 48px;
+    font-family: 'Jost', sans-serif;
+}
+
+.hero-container > div > h3 {
+    color:rgba(255, 255, 255, 0.6);
+    font-size: 24px;
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.hero-container > img {
+    width: 50%;
+    height: 527px;
+    margin-top: 161px;
+    margin-bottom: 72px;
+}
+
+.hero-items > button {
+    background-color: #47B2E4;
+    padding: 9px 28.3594px 12px 28px;
+    font-size: 16px;
+    border-radius: 50px;
+    border: 0;
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.hero-items span {
+    font-family: 'Jost', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 65px;
+}
+
+.hero-items {
+    margin-top: 57.8px;
+}
+
+
+
