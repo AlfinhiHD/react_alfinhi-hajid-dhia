@@ -70,7 +70,13 @@ nav {
 }
 
 .hero-items > span:hover {
-    background-color: #47B2E4;
+    background-color: #FFFFFF;
+    color: #37517E;
+}
+
+.hero-items > button:hover {
+    background-color: #FFFFFF;
+    color: #37517E;
 }
 
 .hero-items {
@@ -150,6 +156,21 @@ footer > span {
     font-weight: 400;
     font-size: 14px;
 }
+
+footer > span > a {
+    color:#fff;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+footer > span > a:hover {
+    text-decoration:underline;
+    color:#47B2E4;
+}
+
 
 #footer-item1 {
     margin-left: 93px;
@@ -264,11 +285,9 @@ a:hover {
     border: 0px;
 }
 
-@media only screen and (max-width: 600px) {
-    body {
-      background-color: lightblue;
-    }
-  }
+.contents-4 > button:hover {
+    background-color: #37517E;
+}
 
 
 
