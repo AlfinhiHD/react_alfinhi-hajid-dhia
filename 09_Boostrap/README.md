@@ -1,4 +1,4 @@
-# (7) Bootstrap
+# (9) Bootstrap
 
 ### Apa itu Bootstrap?
 Bootstrap adalah framework web development berbasis HTML, CSS, dan JavaScript yang dirancang untuk mempercepat proses pengembangan web responsive dan mobile-first (memprioritaskan perangkat seluler).
