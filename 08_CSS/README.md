@@ -1,4 +1,4 @@
-# (7) CSS
+# (8) CSS
 
 ### Apa itu CSS?
 Cascading Style Sheets (CSS) biasanya digunakan untuk mengatur tampilan elemen yang tertulis dalam bahasa markup, seperti HTML. CSS berfungsi untuk memisahkan konten dari tampilan visualnya di situs. CSS dapat **menghias** halaman web seperti (color, size, font, background, width, height, dll.). CSS juga dapat mengatur **posisi** pada halaman web (float, align, display, position, dll.).
