@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <!-- Bootsrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+        
         <title>Bootstrap</title>
     </head>
     <body>
@@ -46,105 +46,67 @@
             </div>
         </div>
 
-        <form class="container mt-5 w-50 needs-validation" novalidate>
+        <form class="container mt-5 w-50" id="productForm">
             <h2>Detail Product</h2>
 
             <div class="mb-4 mt-4 w-50">
-                <label class="form-label">Product Name</label>
-                <input type="text" id="productName" class="form-control" required>
-                <div class="valid-feedback">
-                    Done!
-                </div>
-                <div class="invalid-feedback">
-                    Please input your product name!
-                </div>
+                <label class="form-label has-success" for="productName">Product Name</label>
+                <input type="text" id="productName" class="form-control nama">
+                <p id="nameError" class="text-danger"></p>
             </div>
             <div class="mb-4 w-50">
-                <label class="form-label">Product Cathegory</label>
-                <select class="form-select" aria-label="Default select example" required>
+                <label class="form-label" for="productCathegory">Product Cathegory</label>
+                <select class="form-select" id="productCathegory" aria-label="Default select example">
                     <option disable selected value hidden>Chose...</option>
                     <option name="category" value="Electronic">Electronic</option>
                     <option name="category" value="Furniture">Furniture</option>
                     <option name="category" value="Tools">Tools</option>
                 </select>
-                <div class="valid-feedback">
-                    Done!
-                </div>
-                <div class="invalid-feedback">
-                    Please input the product cathegory!
-                </div>
+                <p id="cathegoryError" class="text-danger"></p>
             </div>
             <div class="mb-4 w-50">
-                <label class="form-label">Image of Product</label>
-                <input class="form-control" type="file" required>
-                <div class="valid-feedback">
-                    Done!
-                </div>
-                <div class="invalid-feedback">
-                    Please input the image of product!
-                </div>
+                <label class="form-label" for="imageProduct">Image of Product</label>
+                <input class="form-control" id="imageProduct" type="file">
+                <small id="imageError" class="text-danger"></small>
             </div>
             <div class="mb-4">
-                <label class="form-label">Product Freshness</label>
+                <label class="form-label" for="productFreshness">Product Freshness</label>
                 <div class="form-check">
-                    <input class="form-check-input" name="freshness" required type="radio">
+                    <input class="form-check-input" id="new" name="freshness" type="radio" value="brand-new">
                     <label class="form-check-label">
                     Brand New
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="freshness" type="radio">
+                    <input class="form-check-input" id="second" name="freshness" type="radio" value="second-hand">
                     <label class="form-check-label">
                     Second Hand
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="freshness" type="radio">
+                    <input class="form-check-input" id="refurbished" name="freshness" type="radio" value="refurbished">
                     <label class="form-check-label">
                     Refurbished
                     </label>
                 </div>
-                <div class="invalid-feedback">
-                    Please select the product freshness!
-                </div>
+                <p id="freshnessError" class="text-danger"></p>
             </div>
             <div class="mb-4">
-                <label class="form-label">Additional Description</label>
-                <textarea rows="5" class="form-control" required></textarea>
-                <div class="valid-feedback">
-                    Done!
-                </div>
-                <div class="invalid-feedback">
-                    Please add the additional description!
-                </div>
+                <label class="form-label" for="productDesc">Additional Description</label>
+                <textarea rows="5" class="form-control" id="productDesc"></textarea>
+                <p id="descError" class="text-danger"></p>
+            </div>
+            <div class="mb-4 w-50">
+                <label class="form-label" for="productPrice">Product Price</label>
+                <input type="number" class="form-control" id="productPrice"></input>
+                <p id="priceError" class="text-danger"></p>
             </div>
 
             <button type="submit" class="btn btn-primary w-100 mt-5">
                 Submit
             </button>
         </form>
-
-        <!-- Validation -->
-        <script>
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-                }, false)
-            })
-            })()
-        </script>    
+    <!-- Javascript -->
+    <script src="assets/main.js"></script>
     </body>
 </html>
