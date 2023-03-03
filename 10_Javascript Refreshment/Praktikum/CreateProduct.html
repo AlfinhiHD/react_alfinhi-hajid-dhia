@@ -52,17 +52,17 @@
             <div class="mb-4 mt-4 w-50">
                 <label class="form-label has-success" for="productName">Product Name</label>
                 <input type="text" id="productName" class="form-control nama">
-                <p id="nameError" class="text-danger"></p>
+                <small id="nameError" class="text-danger"></small>
             </div>
             <div class="mb-4 w-50">
                 <label class="form-label" for="productCathegory">Product Cathegory</label>
-                <select class="form-select" id="productCathegory" aria-label="Default select example">
+                <select id="productCathegory" class="form-select" aria-label="Default select example">
                     <option disable selected value hidden>Chose...</option>
                     <option name="category" value="Electronic">Electronic</option>
                     <option name="category" value="Furniture">Furniture</option>
                     <option name="category" value="Tools">Tools</option>
                 </select>
-                <p id="cathegoryError" class="text-danger"></p>
+                <small id="cathegoryError" class="text-danger"></small>
             </div>
             <div class="mb-4 w-50">
                 <label class="form-label" for="imageProduct">Image of Product</label>
@@ -72,37 +72,37 @@
             <div class="mb-4">
                 <label class="form-label" for="productFreshness">Product Freshness</label>
                 <div class="form-check">
-                    <input class="form-check-input" id="new" name="freshness" type="radio" value="brand-new">
+                    <input id="new" name="freshness" class="form-check-input" type="radio" value="brand-new">
                     <label class="form-check-label">
                     Brand New
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" id="second" name="freshness" type="radio" value="second-hand">
+                    <input id="second" name="freshness" class="form-check-input" type="radio" value="second-hand">
                     <label class="form-check-label">
                     Second Hand
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" id="refurbished" name="freshness" type="radio" value="refurbished">
+                    <input id="refurbished" name="freshness" class="form-check-input" type="radio" value="refurbished">
                     <label class="form-check-label">
                     Refurbished
                     </label>
                 </div>
-                <p id="freshnessError" class="text-danger"></p>
+                <small id="freshnessError" class="text-danger"></small>
             </div>
             <div class="mb-4">
                 <label class="form-label" for="productDesc">Additional Description</label>
                 <textarea rows="5" class="form-control" id="productDesc"></textarea>
-                <p id="descError" class="text-danger"></p>
+                <small id="descError" class="text-danger"></small>
             </div>
             <div class="mb-4 w-50">
                 <label class="form-label" for="productPrice">Product Price</label>
                 <input type="number" class="form-control" id="productPrice"></input>
-                <p id="priceError" class="text-danger"></p>
+                <small id="priceError" class="text-danger"></small>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100 mt-5">
+            <button type="submit" id="submitButton" class="btn btn-primary w-100 mt-5">
                 Submit
             </button>
         </form>

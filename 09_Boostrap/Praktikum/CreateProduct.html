@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/09_Boostrap/Praktikum/boostrapstyle.css">
         
         <!-- Bootstrap CSS -->
         
@@ -76,8 +77,8 @@
                 </div>
             </div>
             <div class="mb-4 w-50">
-                <label class="form-label">Image of Product</label>
-                <input class="form-control" type="file" required>
+                <label class="form-label" for="imageOfProduct">Image of Product</label>
+                <input class="form-control" type="file" id="imageOfProduct" required>
                 <div class="valid-feedback">
                     Done!
                 </div>
@@ -118,6 +119,12 @@
                 <div class="invalid-feedback">
                     Please add the additional description!
                 </div>
+            </div>
+
+            <div class="mb-4 w-50">
+                <label class="form-label" for="productPrice">Product Price</label>
+                <input type="number" class="form-control" id="productPrice" placeholder="$ 10"></input>
+                <small id="priceError" class="text-danger"></small>
             </div>
 
             <!-- Tooltip -->

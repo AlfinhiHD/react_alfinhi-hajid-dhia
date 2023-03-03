@@ -1,0 +1,10 @@
+#imageOfProduct {
+    color: #0D6EFD !important;
+    border: 1px solid #0D6EFD !important; 
+}
+  
+#imageOfProduct::-webkit-file-upload-button {
+    background-color: #0D6EFD !important; 
+    color: white !important; 
+}
+  
