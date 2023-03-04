@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootsrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+    
+    <title>Bootstrap</title>
+</head>
+<body>
+    <header>
+        <div class="container-fluid g-0">
+            <nav class="navbar bg-white sticky-top shadow row p-2">
+                <div class="col-7 my-auto">
+                    <span class="navbar-brand text-dark h1">Simple header</span>
+                </div>
+                <div class="col-5 row justify-content-end">
+                    <div class="col-2">
+                        <button class="btn btn-primary" >Home</button>
+                    </div>
+                    <div class="col-2">
+                        <a class="nav-link" href="#">Features</a>
+                    </div>
+                    <div class="col-2">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </div>
+                    <div class="col-2">
+                        <a class="nav-link" href="#">FAQs</a>
+                    </div>
+                    <div class="col-2">
+                        <a class="nav-link" href="#">About</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container text-center mt-5">
+        <img style =" height: 57px; width: 71.5px;" src="assets/Bootstrap_logo.svg.png" alt="Hero Logo">
+        <div class="container mt-4">
+            <h1>Create Product</h1>
+            <p>Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a 
+            <br>validation state that can be triggered by attempting to submit the form without completing it.</p>
+        </div>
+    </div>
+
+    <form class="container mt-5 w-50" id="productForm">
+        <h2>Detail Product</h2>
+
+        <div class="mb-4 mt-4 w-50">
+            <label class="form-label has-success" for="productName">Product Name</label>
+            <input type="text" id="productName" class="form-control nama">
+            <small id="nameError" class="text-danger"></small>
+        </div>
+        <div class="mb-4 w-50">
+            <label class="form-label" for="productCathegory">Product Cathegory</label>
+            <select id="productCathegory" class="form-select" aria-label="Default select example">
+                <option disable selected value hidden>Chose...</option>
+                <option name="category" value="Electronic">Electronic</option>
+                <option name="category" value="Furniture">Furniture</option>
+                <option name="category" value="Tools">Tools</option>
+            </select>
+            <small id="cathegoryError" class="text-danger"></small>
+        </div>
+        <div class="mb-4 w-50">
+            <label class="form-label" for="imageProduct">Image of Product</label>
+            <input class="form-control" id="imageProduct" type="file">
+            <small id="imageError" class="text-danger"></small>
+        </div>
+        <div class="mb-4">
+            <label class="form-label" for="productFreshness">Product Freshness</label>
+            <div class="form-check">
+                <input id="new" name="freshness" class="form-check-input" type="radio" value="Brand New">
+                <label class="form-check-label">
+                Brand New
+                </label>
+            </div>
+            <div class="form-check">
+                <input id="second" name="freshness" class="form-check-input" type="radio" value="Second Hand">
+                <label class="form-check-label">
+                Second Hand
+                </label>
+            </div>
+            <div class="form-check">
+                <input id="refurbished" name="freshness" class="form-check-input" type="radio" value="Refurbished">
+                <label class="form-check-label">
+                Refurbished
+                </label>
+            </div>
+            <small id="freshnessError" class="text-danger"></small>
+        </div>
+        <div class="mb-4">
+            <label class="form-label" for="productDesc">Additional Description</label>
+            <textarea rows="5" class="form-control" id="productDesc"></textarea>
+            <small id="descError" class="text-danger"></small>
+        </div>
+        <div class="mb-4 w-50">
+            <label class="form-label" for="productPrice">Product Price</label>
+            <input type="number" class="form-control" id="productPrice"></input>
+            <small id="priceError" class="text-danger"></small>
+        </div>
+
+        <button type="submit" id="submitButton" class="btn btn-primary w-100 mt-5">
+            Submit
+        </button>
+    </form>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">List Product</h2>
+        <table class="table table-striped w-75" id="data-table">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Category</th>
+                    <th scope="col">Image of Product</th>
+                    <th scope="col">Product Freshness</th>
+                    <th scope="col">Additional Description</th>
+                    <th scope="col">Product Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <input type="text" id="inputCari" placeholder="Search by Product Name" class="form-control w-25">
+        <div class="mt-3">
+            <button type="button" class="btn btn-primary" onclick="hapusData()">Deletion</button>
+            <button type="button" class="btn btn-outline-primary" onclick="cariData()">Search</button>
+        </div>
+    </div>
+    
+<!-- Javascript -->
+<script src="main.js"></script>
+</body>
+</html>
