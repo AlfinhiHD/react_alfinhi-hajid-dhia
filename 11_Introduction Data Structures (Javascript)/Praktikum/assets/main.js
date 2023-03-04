@@ -7,6 +7,7 @@ const radioButtons = document.getElementsByName('freshness');
 const descInput = document.querySelector('#productDesc');
 const priceInput = document.querySelector('#productPrice');
 
+
 //button class
 // const submitButton = document.getElementById('submitButton');
 
@@ -77,6 +78,7 @@ form.addEventListener('submit', function (event) {
         }
     }
 
+
     // Validasi input Dekripsi
     if (descInput.value === '') {
         descError.textContent = 'Deskripsi product tidak boleh kosong.';
@@ -93,6 +95,10 @@ form.addEventListener('submit', function (event) {
         priceError.textContent = 'Harga product tidak boleh kosong.';
         priceInput.classList.remove("is-valid");
         priceInput.classList.add("is-invalid");
+    } else if (parseInt(priceInput.value) <= 0) {
+        priceError.textContent = 'Harap masukan harga product yang valid.';
+        priceInput.classList.remove("is-valid");
+        priceInput.classList.add("is-invalid");
     } else {
         priceError.textContent = '';
         priceInput.classList.remove("is-invalid");
@@ -102,12 +108,12 @@ form.addEventListener('submit', function (event) {
     // Jika semua input valid, submit form
     if (nameError.textContent === '' && cathegoryError.textContent === '' && imageError.textContent === '' && freshnessError.textContent === '' && descError.textContent === '' && priceError.textContent === '') {
 
-        // alert("Data Produk\n \nNama : " + nameInput.value 
-        // + "\nCathegory : " + cathegoryInput.value
-        // + "\nImage : " + imageInput.value
-        // + "\nFreshness : " + selectedValue
-        // + "\nDecription : " + descInput.value
-        // + "\nPrice : " + priceInput.value)
+        // Remove class valid tiap form
+        nameInput.classList.remove("is-valid");
+        cathegoryInput.classList.remove("is-valid");
+        imageInput.classList.remove("is-valid");
+        descInput.classList.remove("is-valid");
+        priceInput.classList.remove("is-valid");
 
 
         // Mengambil data
@@ -133,10 +139,9 @@ form.addEventListener('submit', function (event) {
         // alert(JSON.stringify(data));
 
         // Membersihkan input fields setelah data ditambahkan
-        nameInput.value;
+        nameInput.value = "";
         cathegoryInput.value = "";
         imageInput.value = "";
-        selectedValue = "";
         descInput.value = "";
         priceInput.value = "";
 
@@ -155,7 +160,7 @@ form.addEventListener('submit', function (event) {
             var descCell = row.insertCell(5);
             var priceCell = row.insertCell(6);
 
-            noCell.innerHTML = data[i].counter;
+            noCell.innerHTML = data[i].no;
             nameCell.innerHTML = data[i].name;
             cathegoryCell.innerHTML = data[i].cathegory;
             imageCell.innerHTML = data[i].image;
@@ -166,6 +171,27 @@ form.addEventListener('submit', function (event) {
     }
 
 });
+
+function hapusData() {
+    data.pop();
+    console.log(data.length)
+    counter--;
+
+    var table = document.getElementById("data-table");
+    var tbody = table.getElementsByTagName("tbody")[0];
+    tbody.innerHTML = "";
+
+    for (var i = 0; i < data.length; i++) {
+        noCell.innerHTML = data[i].no;
+        nameCell.innerHTML = data[i].name;
+        cathegoryCell.innerHTML = data[i].cathegory;
+        imageCell.innerHTML = data[i].image;
+        freshnessCell.innerHTML = data[i].freshness;
+        descCell.innerHTML = data[i].desc;
+        priceCell.innerHTML = data[i].price;
+    }
+
+}
 
 //Tambahan button disabled
 //Fungsi onkeyup
