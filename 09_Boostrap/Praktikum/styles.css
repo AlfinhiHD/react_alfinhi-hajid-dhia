@@ -228,6 +228,7 @@ footer > span > a:hover {
     font-family: 'Open Sans';
     font-weight: 400;
     font-size: 14px;
+    padding-top: 5px;
     margin-top: 15px;
     margin-left: 22px;
     text-decoration: none;
@@ -259,6 +260,7 @@ a:hover {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
+    padding-top: 8px;
     margin-bottom: 15px;
     margin-left: 22px;
 }
