@@ -7,11 +7,6 @@ const radioButtons = document.getElementsByName('freshness');
 const descInput = document.querySelector('#productDesc');
 const priceInput = document.querySelector('#productPrice');
 
-
-//button class
-// const submitButton = document.getElementById('submitButton');
-
-// Errors id on tag p 
 const nameError = document.getElementById('nameError');
 const cathegoryError = document.getElementById('cathegoryError');
 const imageError = document.getElementById('imageError');
@@ -22,6 +17,69 @@ const priceError = document.getElementById('priceError');
 var data = [];
 var counter = 0;
 
+function readData() {
+
+    // Mengambil tabel dan loop untuk menambahkan setiap data ke dalam tabel
+    var table = document.getElementById("data-table");
+    var tbody = table.getElementsByTagName("tbody")[0];
+    // Membersihkan tbody sebelum menambahkan data baru
+    tbody.innerHTML = ""; 
+
+    for (var i = 0; i < data.length; i++) {
+        var row = tbody.insertRow();
+        var noCell = row.insertCell(0);
+        var nameCell = row.insertCell(1);
+        var cathegoryCell = row.insertCell(2);
+        var imageCell = row.insertCell(3);
+        var freshnessCell = row.insertCell(4);
+        var descCell = row.insertCell(5);
+        var priceCell = row.insertCell(6);
+
+        noCell.innerHTML = data[i].no;
+        nameCell.innerHTML = data[i].name;
+        cathegoryCell.innerHTML = data[i].cathegory;
+        imageCell.innerHTML = data[i].image;
+        freshnessCell.innerHTML = data[i].freshness;
+        descCell.innerHTML = data[i].desc;
+        priceCell.innerHTML = data[i].price;
+    }
+}
+
+function hapusData() {
+    // Menghapus nilai paling akhir pada array data
+    data.pop();
+    counter--;
+
+    readData();
+}
+
+function cariData() {
+    var inputCari = document.getElementById("inputCari");
+    var nameKey = inputCari.value.toLowerCase();
+    var notFoundData = true;
+
+    for (var i = 0; i < data.length; i++) {
+        // Memeriksa apakah data sesuai dengan kata kunci pencarian
+        if (data[i].name.toLowerCase() === nameKey) {
+            // Jika sesuai, maka menambahkan data ke alert
+            alert("Data Produk yang dicari\n \nNo : " + data[i].no
+            + "\nNama : " + data[i].name
+            + "\nCathegory : " + data[i].cathegory
+            + "\nImage : " + data[i].image
+            + "\nFreshness : " + data[i].freshness
+            + "\nDecription : " + data[i].desc
+            + "\nPrice : " + data[i].price)
+
+            // Mengeset variabel notFoundData menjadi salah
+            notFoundData = false;
+        }
+    }
+
+    // Jika data tidak ada maka akan mengeluarkan alert
+    if(notFoundData) {
+        alert("Mohon maaf data tidak ditemukan!")
+    }
+}
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -72,12 +130,14 @@ form.addEventListener('submit', function (event) {
         if (radioButtons[i].checked) {
             freshnessError.textContent = '';
             selectedValue = radioButtons[i].value;
+
+            //Menghilangkan checked pada radiobutton saat sudah submit
+            radioButtons[i].checked = false;
             break;
         } else {
             freshnessError.textContent = 'Jenis freshness harus dipilih.';
         }
     }
-
 
     // Validasi input Dekripsi
     if (descInput.value === '') {
@@ -115,7 +175,6 @@ form.addEventListener('submit', function (event) {
         descInput.classList.remove("is-valid");
         priceInput.classList.remove("is-valid");
 
-
         // Mengambil data
         var name = nameInput.value;
         var cathegory = cathegoryInput.value;
@@ -136,8 +195,6 @@ form.addEventListener('submit', function (event) {
         };
         data.push(newData);
 
-        // alert(JSON.stringify(data));
-
         // Membersihkan input fields setelah data ditambahkan
         nameInput.value = "";
         cathegoryInput.value = "";
@@ -145,53 +202,8 @@ form.addEventListener('submit', function (event) {
         descInput.value = "";
         priceInput.value = "";
 
-        // Mengambil tabel dan loop untuk menambahkan setiap data ke dalam tabel
-        var table = document.getElementById("data-table");
-        var tbody = table.getElementsByTagName("tbody")[0];
-        tbody.innerHTML = ""; // Membersihkan tbody sebelum menambahkan data baru
-
-        for (var i = 0; i < data.length; i++) {
-            var row = tbody.insertRow();
-            var noCell = row.insertCell(0);
-            var nameCell = row.insertCell(1);
-            var cathegoryCell = row.insertCell(2);
-            var imageCell = row.insertCell(3);
-            var freshnessCell = row.insertCell(4);
-            var descCell = row.insertCell(5);
-            var priceCell = row.insertCell(6);
-
-            noCell.innerHTML = data[i].no;
-            nameCell.innerHTML = data[i].name;
-            cathegoryCell.innerHTML = data[i].cathegory;
-            imageCell.innerHTML = data[i].image;
-            freshnessCell.innerHTML = data[i].freshness;
-            descCell.innerHTML = data[i].desc;
-            priceCell.innerHTML = data[i].price;
-        }
+        readData();
     }
 
 });
 
-function hapusData() {
-    data.pop();
-    console.log(data.length)
-    counter--;
-
-    var table = document.getElementById("data-table");
-    var tbody = table.getElementsByTagName("tbody")[0];
-    tbody.innerHTML = "";
-
-    for (var i = 0; i < data.length; i++) {
-        noCell.innerHTML = data[i].no;
-        nameCell.innerHTML = data[i].name;
-        cathegoryCell.innerHTML = data[i].cathegory;
-        imageCell.innerHTML = data[i].image;
-        freshnessCell.innerHTML = data[i].freshness;
-        descCell.innerHTML = data[i].desc;
-        priceCell.innerHTML = data[i].price;
-    }
-
-}
-
-//Tambahan button disabled
-//Fungsi onkeyup
