@@ -84,7 +84,6 @@ form.addEventListener('submit', function (event) {
     }
 
     // Validasi input price
-
     if (priceInput.value === '') {
         priceError.textContent = 'Harga product tidak boleh kosong.';
         priceInput.classList.remove("is-valid");
