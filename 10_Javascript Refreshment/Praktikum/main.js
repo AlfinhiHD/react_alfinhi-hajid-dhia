@@ -29,7 +29,7 @@ form.addEventListener('submit', function (event) {
         nameError.textContent = 'Nama tidak boleh lebih dari 25 karakter.';
         nameInput.classList.remove("is-valid");
         nameInput.classList.add("is-invalid");
-    } else if (/[^a-zA-Z0-9\-\/ ]/.test(nameInput.value)) {
+    } else if (/[^a-zA-Z0-9\- ]/.test(nameInput.value)) {
         nameError.textContent = 'Nama tidak boleh mengandung simbol.';
         nameInput.classList.remove("is-valid");
         nameInput.classList.add("is-invalid");
@@ -88,6 +88,10 @@ form.addEventListener('submit', function (event) {
         priceError.textContent = 'Harga product tidak boleh kosong.';
         priceInput.classList.remove("is-valid");
         priceInput.classList.add("is-invalid");
+    } else if (parseInt(priceInput.value) <= 0) {
+        priceError.textContent = 'Harap masukan harga product yang valid.';
+        priceInput.classList.remove("is-valid");
+        priceInput.classList.add("is-invalid");
     } else {
         priceError.textContent = '';
         priceInput.classList.remove("is-invalid");
@@ -98,7 +102,7 @@ form.addEventListener('submit', function (event) {
     if (nameError.textContent === '' && cathegoryError.textContent === '' && imageError.textContent === '' && freshnessError.textContent === '' && descError.textContent === '' && priceError.textContent === '') {
         form.submit();
 
-        alert("Data Produk\n \nNama : " + nameInput.value 
+        alert("Data Produk\n Nama : " + nameInput.value 
         + "\nCathegory : " + cathegoryInput.value
         + "\nImage : " + imageInput.value
         + "\nFreshness : " + selectedValue
