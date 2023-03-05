@@ -6,48 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg" style="background-color: #B9C1C4">
             <div class="container-fluid">
-                <img class="ms-3 mt-1" src="./assets/Logo.png">
+                <img class="ms-3 mt-1" src="./assets/logo.svg" style="width: 115px; height: 55px;">
                 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
-                    <div class="navbar-nav" style="font-size: 24px;">
-                        <a class="nav-link active mr-5" aria-current="page" href="#">About Us</a>
-                        <a class="nav-link mr-5" href="#">Services</a>
-                        <a class="nav-link mr-5" href="#">Packages</a>
-                        <a class="nav-link mr-5" href="#">Contact Us</a>
+                    <div class="navbar-nav">
+                        <a class="nav-link mr-5" href="#about-us-section">About Us</a>
+                        <a class="nav-link mr-5" href="#services-section">Services</a>
+                        <a class="nav-link mr-5" href="#packages-section">Packages</a>
+                        <a class="nav-link mr-5" href="#contact-us-section">Contact Us</a>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
 
-    <section style="height: 677px; background-color: #B9C1C4;"
+    <section style="height: 700px; background-color: #B9C1C4;"
         class="position-static d-flex flex-row justify-content-between">
         <div class="">
-            <img src="./assets/hero.png" alt="img-hero" style="width: 600px; margin-top: 71px; margin-left: 100px;"
+            <img src="./assets/hero.png" alt="img-hero" style="width: 600px; margin-top: 94px; margin-left: 100px;"
                 class="">
         </div>
         <div class="hero mx-auto" style="margin-top: 220px;">
-            <!-- <h1 class="font-weight-bold mb-0" style="font-size: 84px;">LET'S</h1>
-            <h1 class="font-weight-bold" style="font-size: 92px;">EXPLORE</h1> -->
-            <img src="./assets/image 10.png">
+            <img src="./assets/image 10.svg">
         </div>
     </section>
 
-    <section>
-        <h2 class="section-header" style="margin-top: 40px;">ABOUT US</h2>
+    <section id="about-us-section">
+        <h2 class="section-header" style="margin-top: 60px;">ABOUT US</h2>
         <div class="section-container d-flex flex-row justify-content-center" style="column-gap: 30px;">
             <div class="about-p" style="width: 45%;">
                 <p>PT. International Service Organizer (ISO) merupakan perusahaan yang bergerak dalam bidang Biro
@@ -72,18 +72,34 @@
         </div>
     </section>
 
-    <section>
+    <section id="services-section">
         <h2 class="section-header" style="margin-top: 100px;">SERVICES WE OFFER</h2>
-        
-        <!-- <ul class="service-col">
-            <li>
-                <div class="service-offers">
+        <div class="container services-list">
+            <div class="row" style="margin-top: 100px;">
+                <div class="col-1">
+                    <button class="bulletList"></button>
+                </div>
+                <div class="col-5">
                     <h2>Tour Luar Negeri</h2>
                     <p>Memiliki paket tour luar negeri yang sangat beragam dengan harga dan kualitas terjangkau.</p>
                 </div>
-            </li>
-            <li>
-                <div class="service-offers">
+                <div class="col-1">
+                    <button class="bulletList"></button>
+                </div>
+                <div class="col-5">
+                    <h2>Custom Tour</h2>
+                    <p>
+                        Menyediakan tour khusus sesuai permintaan seperti; studi bandign ke luar
+                        negeri untuk sekolah dan universitas, study tour atau tour dengan destinasi yang ditentukan oleh
+                        peserta.
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-1">
+                    <button class="bulletList"></button>
+                </div>
+                <div class="col-5">
                     <h2>Umroh & Haji+</h2>
                     <p>Melayani para tamu Allah untuk
                         melaksanakan ibadah di tanah suci
@@ -91,82 +107,129 @@
                         sudah terjadwal adalah sebulan 2x
                         pemberangkatan.</p>
                 </div>
-            </li>
-            <li>
-                <div class="service-offers">
-                    <h2>Custom Tour</h2>
-                    <p>
-                        Menyediakan tour khusus sesuai
-                        permintaan seperti; studi bandign ke luar
-                        negeri untuk sekolah dan universitas, study tour atau tour dengan destinasi yang ditentukan oleh
-                        peserta.
-                    </p>
+                <div class="col-1">
+                    <button class="bulletList"></button>
                 </div>
-            </li>
-            <li>
-                <div class="service-offers">
+                <div class="col-5">
                     <h2>EO & WO</h2>
                     <p>
                         Event Organizer dan Wedding Organizer
                         baik di dalam negeri maupun luar negeri.
                     </p>
                 </div>
-            </li>
-        </ul> -->
-    </section>
-
-    <section>
-        <h2 class="section-header" style="margin-top: 40px;">OUR SPECIAL PACKAGES</h2>
-    </section>
-
-    <section>
-        <div class="contact-container row justify-content-center">
-            <h2 class="section-header" style="margin-top: 40px;">GET IN TOUCH</h2>
-            <div class="contact-img" style="width: 40%">
-
             </div>
-            <div class="contact-form" style="width: 40%">
-                <form>
-                    <div class="row justify-content-between">
-                        <div class="col-md-6">
-                            <div class="md-form">
-                                <label for="fname" class="mt-2">First Name</label>
+        </div>
+    </section>
+
+    <section id="packages-section">
+        <h2 class="section-header" style="margin-top: 120px;">OUR SPECIAL PACKAGES</h2>
+        <div class="container packages">
+            <div class="row">
+                <div class="col packages-item-1 me-3 mb-3">
+                    <h2>3 NEGARA</h2>
+                    <h3>Malaysia, Singapura, Thailand</h3>
+                    <p>Start from IDR</p>
+                    <h2>4,66 JT</h2>
+                </div>
+                <div class="col packages-item-2 me-3 mb-3">
+                    <h2>JEPANG</h2>
+                    <p>Start from IDR</p>
+                    <h2>11,6 JT</h2>
+                </div>
+                <div class="col packages-item-3 mb-3">
+                    <h2>KOREA</h2>
+                    <h3>SELATAN</h3>
+                    <p>Start from IDR</p>
+                    <h2>13,9 JT</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col packages-item-4 me-3">
+                    <h2>TURKI</h2>
+                    <p>Start from IDR</p>
+                    <h2>13,9 JT</h2>
+
+                </div>
+                <div class="col packages-item-5 me-3">
+                    <h2>EROPA</h2>
+                    <p>Start from IDR</p>
+                    <h2>19,9 JT</h2>
+
+                </div>
+                <div class="col packages-item-6">
+                    <h2>UMROH</h2>
+                    <p>Start from IDR</p>
+                    <h2>26,9 JT</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-us-section">
+        <div class="container contact-us" style="margin-top: 90px;">
+            <h2 class="section-header">GET IN TOUCH</h2>
+            <div class="row">
+                <div class="col-5 pt-5">
+                    <img src="./assets/paper-plane.png" style="width: 306px; height: 323px;">
+                </div>
+                <div class="col-7">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <label for="fname" class="mt-3">First Name</label>
                                 <input type="text" id="fname" name="fname" class="form-control mt-1">
                             </div>
-                        </div>
-    
-                        <div class="col-md-6">
-                            <div class="md-form">
-                                <label for="lname" class="mt-2">Last Name</label>
+                            <div class="col">
+                                <label for="lname" class="mt-3">Last Name</label>
                                 <input type="text" id="lname" name="lname" class="form-control mt-1">
                             </div>
                         </div>
-                    </div>
+                        <label for="email" class="mt-4">Email</label>
+                        <input type="text" id="email" name="email" class="form-control mt-1">
+                        <label for="message" class="mt-4">Your Question</label>
+                        <textarea type="text" id="message" name="message" rows="3" class="form-control md-textarea mt-1"
+                            style="background-color: #B9C1C4;"></textarea>
 
-                    <div class="col-md-12 mt-3">
-                        <div class="md-form">
-                            <label for="email" class="mt-2">Email</label>
-                            <input type="text" id="email" name="email" class="form-control mt-1">
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 mt-3">
-                        <div class="md-form">
-                            <label for="message" class="mt-2">Your Question</label>
-                            <textarea type="text" id="message" name="message" rows="3" class="form-control md-textarea mt-1"></textarea>
-                        </div>
-
-                    </div>
-                </form>
+                        <button type="submit" class="btnSubmit">SUBMIT</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-
+        <div class="footer-content">
+            <div class="row">
+                <div class="col-5 ms-5 mt-5">
+                    <img src="./assets/logo.svg" alt="logo ISO" style="width: 190px; height: 60px;">
+                    <div class="ms-4 mt-3">
+                        <p>PT. International Service Organizer</p>
+                        <p>Jl. Perumnas Blok D Ruko No. 19<br>
+                        Rt. 006 / Rw. 062 Seturan,<br>
+                        Condongcatur, Depok,<br>
+                        Sleman, Yogyakarta 55283</p>
+                    </div>
+                </div>
+                <div class="col-2 me-5 mt-5">
+                    <h3>Product</h3>
+                    <p>Paket Luar Negeri</p>
+                    <p>Umroh</p>
+                    <p>Haji+</p>
+                    <p>Custom Package</p>
+                    <p>EO & WO</p>
+                </div>
+                <div class="col-3 mt-5">
+                    <h3>Contact</h3>
+                    <p><i class="fa-sharp fa-solid fa-envelope"></i> iso.djaja@gmail.com</p>
+                    <p><i class="fa-sharp fa-solid fa-phone"></i> (0274) 489 897</p>
+                    <p><i class="fa-sharp fa-solid fa-phone"></i> 0821 3666 1500</p>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 140px;">
+                <p>Copyright 2023 PT. International Service Organizer</p>
+            </div>
+        </div>
     </footer>
-
     <script src="index.js"></script>
 </body>
-
 </html>
