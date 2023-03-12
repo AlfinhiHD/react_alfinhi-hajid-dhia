@@ -1,5 +1,5 @@
 
-const Form = () => {
+const Form = () => {            
     return (
         <form className="container mt-5 w-50" id="productForm">
             <h2>Detail Product</h2>
