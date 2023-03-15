@@ -18,7 +18,7 @@ const Form = () => {
                     id="productCathegory"
                     className="form-select"
                     aria-label="Default select example">
-                    <option disable="" selected="" value="" hidden="">
+                    <option disable="" value="" hidden="">
                     Chose...
                     </option>
                     <option name="category" value="Electronic">

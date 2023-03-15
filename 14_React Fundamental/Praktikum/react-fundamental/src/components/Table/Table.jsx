@@ -24,13 +24,12 @@ const Table = () => {
             className="form-control w-25"
             />
             <div className="mt-3">
-                <button type="button" className="btn btn-primary" onclick="hapusData()">
+                <button type="button" className="btn btn-primary" >
                     Deletion
                 </button>
                 <button
                     type="button"
                     className="btn btn-outline-primary"
-                    onclick="cariData()"
                 >
                     Search
                 </button>
