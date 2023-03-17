@@ -1,3 +1,4 @@
+import Button from "../../elements/Button/Button";
 
 const Table = () => {
     return (
@@ -24,15 +25,16 @@ const Table = () => {
             className="form-control w-25"
             />
             <div className="mt-3">
-                <button type="button" className="btn btn-primary" >
-                    Deletion
-                </button>
-                <button
+                <Button
+                    type="button"
+                    className="btn btn-primary"
+                    label="Deletion" 
+                />
+                <Button
                     type="button"
                     className="btn btn-outline-primary"
-                >
-                    Search
-                </button>
+                    label="Search" 
+                />
             </div>
         </div>
     );

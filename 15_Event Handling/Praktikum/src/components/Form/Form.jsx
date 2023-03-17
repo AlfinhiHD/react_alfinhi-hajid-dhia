@@ -1,3 +1,4 @@
+import Button from "../../elements/Button/Button";
 
 const Form = () => {            
     return (
@@ -95,13 +96,10 @@ const Form = () => {
                 <input type="number" className="form-control" id="productPrice" />
                 <small id="priceError" className="text-danger" />
             </div>
-            <button
-            type="submit"
-            id="submitButton"
-            className="btn btn-primary w-100 mt-5"
-            >
-            Submit
-            </button>
+            <Button 
+                className="btn btn-primary w-100 mt-5"
+                label="Submit"
+            />
         </form>
     );
 }
