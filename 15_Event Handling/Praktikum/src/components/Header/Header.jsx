@@ -1,7 +1,8 @@
 import logo from '../../assets/Bootstrap_logo.svg.png'; // with import
 import HeaderBody from '../../elements/HeaderBody/HeaderBody';
 import HeaderTitle from '../../elements/HeaderTitle/HeaderTitle';
-
+import Button from '../../elements/Button/Button';
+import { useState } from 'react';
 
 const Header = () => {
 
@@ -16,6 +17,14 @@ const Header = () => {
         }
     };
 
+    const [title, setTitle] = useState(article.title.en)
+    const [desc, setDesc] = useState(article.description.en)
+
+    const changeLanguage = () => {
+        setTitle(title === article.title.en ? article.title.id : article.title.en);
+        setDesc(desc === article.description.en ? article.description.id : article.description.en);
+    }
+
 
     return (
         <div className="container text-center mt-5">
@@ -26,12 +35,17 @@ const Header = () => {
             />
             <div className="container mt-4">
                 <HeaderTitle 
-                    label={article.title.en}
+                    label={title}
                 />
                 <HeaderBody
-                    label={article.description.en}
+                    label={desc}
                 />
             </div>
+        <Button
+            className="btn btn-primary"
+            label="Ganti Bahasa"
+            onClick={() => changeLanguage()}
+        />
         </div>
     );
 }
