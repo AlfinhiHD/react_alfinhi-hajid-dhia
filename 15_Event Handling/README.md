@@ -10,7 +10,7 @@ State :
 4. Dipakai dalam class
 
 ### Perbedaan Stateful dan Stateless
-Adapun class pada bootstrap yaitu :
+Adapun perbedaan stateful dan stateless yaitu :
 
 | Stateless | Statefull |
 | ----------- | ----------- |
