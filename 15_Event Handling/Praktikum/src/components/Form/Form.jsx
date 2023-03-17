@@ -1,6 +1,25 @@
+import { useState } from "react";
 import Button from "../../elements/Button/Button";
+import Input from "../../elements/Input/Input";
 
 const Form = () => {            
+
+    const [productName, setProductName] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleProductNameInput = (name) => {
+        setProductName(name);
+        if (name.length > 10) {
+            setErrorMessage("Please input a valid product name")
+        }
+        else {
+            setErrorMessage("")
+        }
+    };
+
+    const validClass = !errorMessage ? null : 'is-invalid';
+    
+
     return (
         <form className="container mt-5 w-50" id="productForm">
             <h2>Detail Product</h2>
@@ -8,8 +27,16 @@ const Form = () => {
                 <label className="form-label has-success" htmlFor="productName">
                     Product Name
                 </label>
-                <input type="text" id="productName" className="form-control nama" />
-                <small id="nameError" className="text-danger" />
+                <Input
+                    type="text"
+                    id="productName"
+                    className={`form-control ${validClass}`}
+                    value={productName}
+                    onChange={ (e) => handleProductNameInput(e.target.value)}
+                />
+                <small id="nameError" className="text-danger">
+                {errorMessage}
+                </small>
             </div>
             <div className="mb-4 w-50">
                 <label className="form-label" htmlFor="productCathegory">
@@ -97,6 +124,7 @@ const Form = () => {
                 <small id="priceError" className="text-danger" />
             </div>
             <Button 
+                type="submit"
                 className="btn btn-primary w-100 mt-5"
                 label="Submit"
             />
