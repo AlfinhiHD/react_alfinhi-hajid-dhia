@@ -8,21 +8,23 @@ import Form from './components/Form/Form';
 import Table from './components/Table/Table';
 import RandomNumGen from './components/RandomNumGen/RandomNumGen';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 
 function App() {
+  const [tableData, setTableData] = useState([])
 
-  // useEffect(() => {
-  //   alert("Welcome bang!")
-  // }, [])
+  useEffect(() => {
+    alert("Welcome bang!")
+  }, [])
 
   return (
     <div className="App">
       <Navbar />
       <Header />
       <RandomNumGen />
-      <Form />
-      <Table />
+      <Form setTable={setTableData} />
+      <Table tables={tableData} setTable={setTableData} />
     </div>
   )
 

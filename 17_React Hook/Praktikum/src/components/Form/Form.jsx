@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Button from "../../elements/Button/Button";
 import Input from "../../elements/Input/Input";
+import uuid from 'react-uuid';
 
-const Form = () => {
-
-    
+const Form = ({ setTable }) => {
 
     const formData = {
+        productId: uuid(),
         productName: "",
         productCathegory: "",
         productImage: "",
@@ -26,8 +26,8 @@ const Form = () => {
             ...prev,
             [name]: value
         }))
-        
-        if(name === "productName") {
+
+        if (name === "productName") {
             if (value.length > 10) {
                 setErrorMessage("Please input a valid product name")
             }
@@ -35,11 +35,13 @@ const Form = () => {
                 setErrorMessage("")
             }
         }
-        
+
     }
 
     const handleSubmit = e => {
-
+        e.preventDefault();
+        setTable((prev) => ([...prev, data]))
+        setData(prev => ({...prev, productId: uuid()}))
     }
 
     const validClass = !errorMessage ? null : 'is-invalid';
