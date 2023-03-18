@@ -18,6 +18,7 @@ const Table = ({ tables, setTable }) => {
                         <th scope="col">No</th>
                         <th scope="col">Product Name</th>
                         <th scope="col">Product Category</th>
+                        <th scope="col">Product Freshness</th>
                         <th scope="col">Product Price</th>
                         <th scope="col" colSpan={2}>Action</th>
                     </tr>
@@ -28,6 +29,7 @@ const Table = ({ tables, setTable }) => {
                             <td>{table.productId}</td>
                             <td>{table.productName}</td>
                             <td>{table.productCathegory}</td>
+                            <td>{table.productFreshness}</td>
                             <td>{table.productPrice}</td>
                             <td>
                                 <Button
