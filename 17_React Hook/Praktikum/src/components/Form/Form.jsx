@@ -15,8 +15,18 @@ const Form = ({ setTable }) => {
         productPrice: ""
     }
 
+    const formErrors = {
+        productName: "",
+        productCathegory: "",
+        productImage: "",
+        productFreshness: "",
+        productDesc: "",
+        productPrice: ""
+    }
+
     const [data, setData] = useState(formData)
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errors, setErrors] = useState(formErrors)
+    // const [errorMessage, setErrorMessage] = useState('');
 
     const handleInput = e => {
         const name = e.target.name;
@@ -27,24 +37,49 @@ const Form = ({ setTable }) => {
             [name]: value
         }))
 
-        if (name === "productName") {
-            if (value.length > 10) {
-                setErrorMessage("Please input a valid product name")
-            }
-            else {
-                setErrorMessage("")
-            }
-        }
+        // if (name === "productName") {
+        //     if (value.length > 10) {
+        //         setErrorMessage("Please input a valid product name")
+        //     }
+        //     else {
+        //         setErrorMessage("")
+        //     }
+        // }
 
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-        setTable((prev) => ([...prev, data]))
-        setData(prev => ({...prev, productId: uuid()}))
+
+        const error = {};
+
+        if (!data.productName) {
+            error.productName = "Name is required";
+        }
+        if (!data.productCathegory) {
+            error.productCathegory= "Category is required";
+        }
+        if (!data.productImage) {
+            error.productImage= "Image is required";
+        }
+        if (!data.productDesc) {
+            error.productDesc= "Desc is required";
+        }
+        if (!data.productPrice) {
+            error.productPrice = "Price is required";
+        }
+
+        setErrors(error);
+
+        if (Object.keys(error).length === 0) {
+            setTable((prev) => ([...prev, data]))
+            setData(prev => ({...prev, productId: uuid()}))
+            alert('Form submitted succesfully')
+        }
+        
     }
 
-    const validClass = !errorMessage ? null : 'is-invalid';
+    
 
 
     return (
@@ -57,12 +92,13 @@ const Form = ({ setTable }) => {
                 <Input
                     type="text"
                     name="productName"
-                    className={`form-control ${validClass}`}
+                    // className={`form-control ${validClass}`}
+                    className="form-control"
                     value={data.productName}
                     onChange={handleInput}
                 />
                 <small id="nameError" className="text-danger">
-                    {errorMessage}
+                    {errors.productName}
                 </small>
             </div>
             <div className="mb-4 w-50">
@@ -89,14 +125,18 @@ const Form = ({ setTable }) => {
                         Tools
                     </option>
                 </select>
-                <small id="cathegoryError" className="text-danger" />
+                <small id="cathegoryError" className="text-danger">
+                    {errors.productCathegory}
+                </small>
             </div>
             <div className="mb-4 w-50">
                 <label className="form-label" htmlFor="productImage">
                     Image of Product
                 </label>
                 <input className="form-control" name="productImage" value={data.productImage} type="file" onChange={handleInput} />
-                <small id="imageError" className="text-danger" />
+                <small id="imageError" className="text-danger">
+                    {errors.productImage}
+                </small>
             </div>
             <div className="mb-4">
                 <label className="form-label" htmlFor="productFreshness">
@@ -135,7 +175,6 @@ const Form = ({ setTable }) => {
                     />
                     <label className="form-check-label" htmlFor="refurbished">Refurbished</label>
                 </div>
-                <small id="freshnessError" className="text-danger" />
             </div>
             <div className="mb-4">
                 <label className="form-label" htmlFor="productDesc">
@@ -148,14 +187,18 @@ const Form = ({ setTable }) => {
                     value={data.productDesc}
                     onChange={handleInput}
                 />
-                <small id="descError" className="text-danger" />
+                <small id="descError" className="text-danger">
+                    {errors.productDesc}
+                </small>
             </div>
             <div className="mb-4 w-50">
                 <label className="form-label" htmlFor="productPrice">
                     Product Price
                 </label>
                 <input type="number" className="form-control" name="productPrice" value={data.productPrice} onChange={handleInput} />
-                <small id="priceError" className="text-danger" />
+                <small id="priceError" className="text-danger" >
+                    {errors.productPrice}
+                </small>
             </div>
             <Button
                 type="submit"
