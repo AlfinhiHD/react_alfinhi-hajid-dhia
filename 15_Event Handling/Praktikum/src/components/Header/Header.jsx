@@ -3,19 +3,9 @@ import HeaderBody from '../../elements/HeaderBody/HeaderBody';
 import HeaderTitle from '../../elements/HeaderTitle/HeaderTitle';
 import Button from '../../elements/Button/Button';
 import { useState } from 'react';
+import article from './Article';
 
 const Header = () => {
-
-    const article = {
-        title: {
-          id: "Buat Akun",
-          en: "Create Account"
-        },
-        description: {
-          id: "Di bawah ini adalah contoh formulir yang dibuat seluruhnya dengan kontrol formulir Bootstrap. Setiap grup formulir yang diperlukan memiliki status validasi yang dapat dipicu dengan mencoba mengirimkan formulir tanpa menyelesaikannya.",
-          en: "Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it."
-        }
-    };
 
     const [title, setTitle] = useState(article.title.en)
     const [desc, setDesc] = useState(article.description.en)

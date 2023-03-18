@@ -7,10 +7,14 @@ import Header from './components/Header/Header';
 import Form from './components/Form/Form';
 import Table from './components/Table/Table';
 import RandomNumGen from './components/RandomNumGen/RandomNumGen';
-
+import { useEffect } from 'react';
 
 
 function App() {
+
+  // useEffect(() => {
+  //   alert("Welcome bang!")
+  // }, [])
 
   return (
     <div className="App">
