@@ -2,26 +2,82 @@ import { useState } from "react";
 import Button from "../../elements/Button/Button";
 import Input from "../../elements/Input/Input";
 
-const Form = () => {            
+const Form = () => {
 
-    const [productName, setProductName] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+    const formData = {
+        productName: "",
+        productCathegory: "",
+        productImage: "",
+        productFreshness: "",
+        productDesc: "",
+        productPrice: ""
+    }
 
-    const handleProductNameInput = (name) => {
-        setProductName(name);
-        if (name.length > 10) {
-            setErrorMessage("Please input a valid product name")
+    const formErrors = {
+        productName: "",
+        productCathegory: "",
+        productImage: "",
+        productFreshness: "",
+        productDesc: "",
+        productPrice: ""
+    }
+
+    const [data, setData] = useState(formData)
+    const [errors, setErrors] = useState(formErrors)
+    // const [errorMessage, setErrorMessage] = useState('');
+    const error = {};
+
+    const handleInput = e => {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        setData((prev) => ({
+            ...prev,
+            [name]: value
+        }))
+
+        if (name === "productName") {
+            if (value.length > 10) {
+                error.productName = "Please input a valid product name";
+            }
+            else {
+                error.productName = ""
+            }
+            setErrors(error);
         }
-        else {
-            setErrorMessage("")
-        }
-    };
+    }
 
-    const validClass = !errorMessage ? null : 'is-invalid';
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        if (!data.productName) {
+            error.productName = "Name is required";
+        }
+        if (!data.productCathegory) {
+            error.productCathegory= "Category is required";
+        }
+        if (!data.productImage) {
+            error.productImage= "Image is required";
+        }
+        if (!data.productDesc) {
+            error.productDesc= "Desc is required";
+        }
+        if (!data.productPrice) {
+            error.productPrice = "Price is required";
+        }
+
+        setErrors(error);
+
+        if (Object.keys(error).length === 0) {
+            alert('Form submitted succesfully')
+        }
+        
+    }
+
     
 
     return (
-        <form className="container mt-5 w-50" id="productForm">
+        <form onSubmit={handleSubmit} className="container mt-5 w-50" id="productForm">
             <h2>Detail Product</h2>
             <div className="mb-4 mt-4 w-50">
                 <label className="form-label has-success" htmlFor="productName">
@@ -29,13 +85,15 @@ const Form = () => {
                 </label>
                 <Input
                     type="text"
-                    id="productName"
-                    className={`form-control ${validClass}`}
-                    value={productName}
-                    onChange={ (e) => handleProductNameInput(e.target.value)}
+                    name="productName"
+                    // className={`form-control ${validClass}`}
+                    // className="form-control"
+                    className={`form-control ${errors.productName ? "is-invalid" : ""}`}
+                    value={data.productName}
+                    onChange={handleInput}
                 />
                 <small id="nameError" className="text-danger">
-                {errorMessage}
+                    {errors.productName}
                 </small>
             </div>
             <div className="mb-4 w-50">
@@ -43,66 +101,81 @@ const Form = () => {
                     Product Cathegory
                 </label>
                 <select
-                    id="productCathegory"
-                    className="form-select"
-                    aria-label="Default select example">
+                    name="productCathegory"
+                    value={data.productCathegory}
+                    className={`form-select ${errors.productCathegory ? "is-invalid" : ""}`}
+                    aria-label="Default select example"
+                    onChange={handleInput}
+                >
                     <option disable="" value="" hidden="">
-                    Chose...
+                        Chose...
                     </option>
                     <option name="category" value="Electronic">
-                    Electronic
+                        Electronic
                     </option>
                     <option name="category" value="Furniture">
-                    Furniture
+                        Furniture
                     </option>
                     <option name="category" value="Tools">
-                    Tools
+                        Tools
                     </option>
                 </select>
-                <small id="cathegoryError" className="text-danger" />
+                <small id="cathegoryError" className="text-danger">
+                    {errors.productCathegory}
+                </small>
             </div>
             <div className="mb-4 w-50">
-                <label className="form-label" htmlFor="imageProduct">
+                <label className="form-label" htmlFor="productImage">
                     Image of Product
                 </label>
-                <input className="form-control" id="imageProduct" type="file" />
-                <small id="imageError" className="text-danger" />
+                <input 
+                className={`form-control ${errors.productCathegory ? "is-invalid" : ""}`} 
+                name="productImage" 
+                value={data.productImage} 
+                type="file" 
+                onChange={handleInput} 
+                />
+                <small id="imageError" className="text-danger">
+                    {errors.productImage}
+                </small>
             </div>
             <div className="mb-4">
-                    <label className="form-label" htmlFor="productFreshness">
-                        Product Freshness
-                    </label>
+                <label className="form-label" htmlFor="productFreshness">
+                    Product Freshness
+                </label>
                 <div className="form-check">
                     <input
-                    id="new"
-                    name="freshness"
-                    className="form-check-input"
-                    type="radio"
-                    defaultValue="Brand New"
+                        id="new"
+                        name="productFreshness"
+                        className="form-check-input"
+                        type="radio"
+                        defaultValue="Brand New"
+                        onChange={handleInput}
                     />
-                    <label className="form-check-label">Brand New</label>
+                    <label className="form-check-label" htmlFor="new">Brand New</label>
                 </div>
                 <div className="form-check">
                     <input
-                    id="second"
-                    name="freshness"
-                    className="form-check-input"
-                    type="radio"
-                    defaultValue="Second Hand"
+                        id="second"
+                        name="productFreshness"
+                        className="form-check-input"
+                        type="radio"
+                        defaultValue="Second Hand"
+                        onChange={handleInput}
                     />
-                    <label className="form-check-label">Second Hand</label>
+                    <label className="form-check-label" htmlFor="second">Second Hand</label>
                 </div>
                 <div className="form-check">
                     <input
-                    id="refurbished"
-                    name="freshness"
-                    className="form-check-input"
-                    type="radio"
-                    defaultValue="Refurbished"
+                        id="refurbished"
+                        name="productFreshness"
+                        className="form-check-input"
+                        type="radio"
+                        defaultValue="Refurbished"
+                        onChange={handleInput}
                     />
-                    <label className="form-check-label">Refurbished</label>
+                    <label className="form-check-label" htmlFor="refurbished">Refurbished</label>
                 </div>
-                <small id="freshnessError" className="text-danger" />
             </div>
             <div className="mb-4">
                 <label className="form-label" htmlFor="productDesc">
@@ -110,20 +183,31 @@ const Form = () => {
                 </label>
                 <textarea
                     rows={5}
-                    className="form-control"
-                    id="productDesc"
-                    defaultValue={""}
+                    className={`form-control ${errors.productDesc ? "is-invalid" : ""}`}
+                    name="productDesc"
+                    value={data.productDesc}
+                    onChange={handleInput}
                 />
-                <small id="descError" className="text-danger" />
+                <small id="descError" className="text-danger">
+                    {errors.productDesc}
+                </small>
             </div>
             <div className="mb-4 w-50">
                 <label className="form-label" htmlFor="productPrice">
                     Product Price
                 </label>
-                <input type="number" className="form-control" id="productPrice" />
-                <small id="priceError" className="text-danger" />
+                <input 
+                type="number" 
+                className={`form-control ${errors.productPrice ? "is-invalid" : ""}`} 
+                name="productPrice" 
+                value={data.productPrice} 
+                onChange={handleInput} 
+                />
+                <small id="priceError" className="text-danger" >
+                    {errors.productPrice}
+                </small>
             </div>
-            <Button 
+            <Button
                 type="submit"
                 className="btn btn-primary w-100 mt-5"
                 label="Submit"

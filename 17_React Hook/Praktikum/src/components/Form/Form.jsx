@@ -27,6 +27,7 @@ const Form = ({ setTable }) => {
     const [data, setData] = useState(formData)
     const [errors, setErrors] = useState(formErrors)
     // const [errorMessage, setErrorMessage] = useState('');
+    const error = {};
 
     const handleInput = e => {
         const name = e.target.name;
@@ -37,21 +38,19 @@ const Form = ({ setTable }) => {
             [name]: value
         }))
 
-        // if (name === "productName") {
-        //     if (value.length > 10) {
-        //         setErrorMessage("Please input a valid product name")
-        //     }
-        //     else {
-        //         setErrorMessage("")
-        //     }
-        // }
-
+        if (name === "productName") {
+            if (value.length > 10) {
+                error.productName = "Please input a valid product name";
+            }
+            else {
+                error.productName = ""
+            }
+            setErrors(error);
+        }
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        const error = {};
 
         if (!data.productName) {
             error.productName = "Name is required";
@@ -81,7 +80,6 @@ const Form = ({ setTable }) => {
 
     
 
-
     return (
         <form onSubmit={handleSubmit} className="container mt-5 w-50" id="productForm">
             <h2>Detail Product</h2>
@@ -93,7 +91,8 @@ const Form = ({ setTable }) => {
                     type="text"
                     name="productName"
                     // className={`form-control ${validClass}`}
-                    className="form-control"
+                    // className="form-control"
+                    className={`form-control ${errors.productName ? "is-invalid" : ""}`}
                     value={data.productName}
                     onChange={handleInput}
                 />
@@ -108,7 +107,7 @@ const Form = ({ setTable }) => {
                 <select
                     name="productCathegory"
                     value={data.productCathegory}
-                    className="form-select"
+                    className={`form-select ${errors.productCathegory ? "is-invalid" : ""}`}
                     aria-label="Default select example"
                     onChange={handleInput}
                 >
@@ -133,7 +132,13 @@ const Form = ({ setTable }) => {
                 <label className="form-label" htmlFor="productImage">
                     Image of Product
                 </label>
-                <input className="form-control" name="productImage" value={data.productImage} type="file" onChange={handleInput} />
+                <input 
+                className={`form-control ${errors.productCathegory ? "is-invalid" : ""}`} 
+                name="productImage" 
+                value={data.productImage} 
+                type="file" 
+                onChange={handleInput} 
+                />
                 <small id="imageError" className="text-danger">
                     {errors.productImage}
                 </small>
@@ -182,7 +187,7 @@ const Form = ({ setTable }) => {
                 </label>
                 <textarea
                     rows={5}
-                    className="form-control"
+                    className={`form-control ${errors.productDesc ? "is-invalid" : ""}`}
                     name="productDesc"
                     value={data.productDesc}
                     onChange={handleInput}
@@ -195,7 +200,13 @@ const Form = ({ setTable }) => {
                 <label className="form-label" htmlFor="productPrice">
                     Product Price
                 </label>
-                <input type="number" className="form-control" name="productPrice" value={data.productPrice} onChange={handleInput} />
+                <input 
+                type="number" 
+                className={`form-control ${errors.productPrice ? "is-invalid" : ""}`} 
+                name="productPrice" 
+                value={data.productPrice} 
+                onChange={handleInput} 
+                />
                 <small id="priceError" className="text-danger" >
                     {errors.productPrice}
                 </small>
