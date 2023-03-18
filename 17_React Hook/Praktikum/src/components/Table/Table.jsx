@@ -3,8 +3,10 @@ import Button from "../../elements/Button/Button";
 const Table = ({ tables, setTable }) => {
 
     const deleteHandler = (id) => {
-        const filteredTable = tables.filter(table => table.productId != id)
-        setTable([...filteredTable])
+        if (window.confirm('Are you sure you want to delete this item?')) {
+            const filteredTable = tables.filter(table => table.productId != id)
+            setTable([...filteredTable])
+          }
     }
 
     return (
