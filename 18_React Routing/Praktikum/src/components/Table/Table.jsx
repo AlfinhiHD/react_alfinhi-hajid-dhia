@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../elements/Button/Button";
 
 const Table = ({ tables, setTable }) => {
@@ -26,7 +27,9 @@ const Table = ({ tables, setTable }) => {
                 <tbody>
                     {tables.map((table) => (
                         <tr key={table.productId}>
-                            <td>{table.productId}</td>
+                            <td>
+                                <Link to={`/detailproduct/${table.productId}`}>{table.productId}</Link>
+                            </td>
                             <td>{table.productName}</td>
                             <td>{table.productCathegory}</td>
                             <td>{table.productFreshness}</td>
@@ -42,6 +45,7 @@ const Table = ({ tables, setTable }) => {
                                 className="btn btn-danger" 
                                 label="Delete"/>
                             </td>
+
                         </tr>
                     ))
                     }

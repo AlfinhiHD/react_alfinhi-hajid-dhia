@@ -8,8 +8,9 @@ import RandomNumGen from '../../components/RandomNumGen/RandomNumGen';
 import { useState } from 'react';
 
 
-function CreateProduct() {
+function CreateProduct({setData}) {
   const [tableData, setTableData] = useState([])
+  setData(tableData)
 
   return (
     <>
@@ -18,6 +19,7 @@ function CreateProduct() {
       <RandomNumGen />
       <Form setTable={setTableData} />
       <Table tables={tableData} setTable={setTableData} />
+      
     </>
       
   )
