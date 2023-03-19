@@ -12,23 +12,23 @@ const Navbar = () => {
                     <div className="col-2">
                         <button className="btn btn-primary">Home</button>
                     </div>
-                    <div className="col-2">
-                        <a className="nav-link" href="#">
+                    <div className="col-2 align-self-center" >
+                        <a className="nav-link text-primary" href="#">
                         Features
                         </a>
                     </div>
-                    <div className="col-2">
-                        <a className="nav-link" href="#">
+                    <div className="col-2 align-self-center">
+                        <a className="nav-link text-primary" href="#">
                         Pricing
                         </a>
                     </div>
-                    <div className="col-2">
-                        <a className="nav-link" href="#">
+                    <div className="col-2 align-self-center">
+                        <a className="nav-link text-primary" href="#">
                         FAQs
                         </a>
                     </div>
-                    <div className="col-2">
-                        <a className="nav-link" href="#">
+                    <div className="col-2 align-self-center">
+                        <a className="nav-link text-primary" href="#">
                         About
                         </a>
                     </div>
