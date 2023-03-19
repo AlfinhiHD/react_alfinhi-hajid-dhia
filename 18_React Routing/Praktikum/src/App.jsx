@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import CreateProduct from './pages/CreateProduct/CreateProduct';
 import LandingPage from './pages/LandingPage/LandingPage';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 
 
@@ -17,8 +18,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route exact path="/" element={<LandingPage />} />
         <Route path="/getstarted" element={<CreateProduct />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
   )
