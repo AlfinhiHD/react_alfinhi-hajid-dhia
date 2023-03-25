@@ -1,7 +1,7 @@
 
 
 
-const PackagesItem = ({props}) => {            
+const PackagesItem = (props) => {            
     
     return (
         <>
