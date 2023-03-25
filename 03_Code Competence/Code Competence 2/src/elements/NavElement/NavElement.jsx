@@ -5,7 +5,7 @@ const NavElement = (props) => {
     
     return (
         <a
-        className={props.label}
+        className="nav-link mr-5"
         href={props.href}
         >
         {props.label}
