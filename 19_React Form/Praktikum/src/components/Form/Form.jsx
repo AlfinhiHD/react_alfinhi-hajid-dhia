@@ -50,6 +50,7 @@ const Form = ({ setTable }) => {
     }
 
     const handleSubmit = e => {
+        
         e.preventDefault();
 
         if (!data.productName) {
@@ -66,6 +67,10 @@ const Form = ({ setTable }) => {
         }
         if (!data.productPrice) {
             error.productPrice = "Price is required";
+        }
+
+        if (!data.productFreshness) {
+            error.productFreshness = "Freshness is required";
         }
 
         setErrors(error);
@@ -153,7 +158,7 @@ const Form = ({ setTable }) => {
                         name="productFreshness"
                         className="form-check-input"
                         type="radio"
-                        defaultValue="Brand New"
+                        value="Brand New"
                         onChange={handleInput}
                     />
                     <label className="form-check-label" htmlFor="new">Brand New</label>
@@ -164,7 +169,7 @@ const Form = ({ setTable }) => {
                         name="productFreshness"
                         className="form-check-input"
                         type="radio"
-                        defaultValue="Second Hand"
+                        value="Second Hand"
                         onChange={handleInput}
                     />
                     <label className="form-check-label" htmlFor="second">Second Hand</label>
@@ -175,11 +180,14 @@ const Form = ({ setTable }) => {
                         name="productFreshness"
                         className="form-check-input"
                         type="radio"
-                        defaultValue="Refurbished"
+                        value="Refurbished"
                         onChange={handleInput}
                     />
                     <label className="form-check-label" htmlFor="refurbished">Refurbished</label>
                 </div>
+                <small id="freshnessError" className="text-danger" >
+                    {errors.productFreshness}
+                </small>
             </div>
             <div className="mb-4">
                 <label className="form-label" htmlFor="productDesc">
