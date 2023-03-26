@@ -13,6 +13,10 @@ function App() {
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800;900&display=swap"
         rel="stylesheet"
       />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"
+      />
 
       <ProfilePage />
     </div>
