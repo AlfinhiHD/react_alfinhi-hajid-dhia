@@ -50,6 +50,7 @@ const ContactForm = () => {
                         type="text"
                         id="fname"
                         name="fname"
+                        style={{ backgroundColor: "#B9C1C4" }}
                         value={formik.values.fname}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -71,6 +72,7 @@ const ContactForm = () => {
                         type="text"
                         id="lname"
                         name="lname"
+                        style={{ backgroundColor: "#B9C1C4" }}
                         value={formik.values.lname}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -92,6 +94,7 @@ const ContactForm = () => {
                 type="text"
                 id="email"
                 name="email"
+                style={{ backgroundColor: "#B9C1C4" }}
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -114,7 +117,6 @@ const ContactForm = () => {
                 name="message"
                 rows={3}
                 style={{ backgroundColor: "#B9C1C4" }}
-                defaultValue={""}
                 value={formik.values.message}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
