@@ -31,7 +31,7 @@ const AboutUs = () => {
                 <div
                     className="about-img"
                     style={{
-                        backgroundImage: "url(./assets/about.png)",
+                        backgroundImage: "url(../src/assets/about.png)",
                         width: "30%",
                         backgroundSize: "contain",
                         backgroundRepeat: "no-repeat"

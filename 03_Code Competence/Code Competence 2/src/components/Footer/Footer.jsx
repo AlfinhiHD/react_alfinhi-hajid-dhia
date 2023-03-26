@@ -9,7 +9,7 @@ const Footer = () => {
                 <div className="row">
                     <div className="col-5 ms-5 mt-5">
                         <img
-                            src="./assets/logo.svg"
+                            src="../src/assets/logo.svg"
                             alt="logo ISO"
                             style={{ width: 190, height: 60 }}
                         />

@@ -10,14 +10,14 @@ const HeroSection = () => {
         >
             <div className="">
                 <img
-                    src="./assets/hero.png"
+                    src="../src/assets/hero.png"
                     alt="img-hero"
                     style={{ width: 600, marginTop: 94, marginLeft: 100 }}
                     className=""
                 />
             </div>
             <div className="hero mx-auto" style={{ marginTop: 220 }}>
-                <img src="./assets/image 10.svg" />
+                <img src="../src/assets/image 10.svg" />
             </div>
         </section>
     )

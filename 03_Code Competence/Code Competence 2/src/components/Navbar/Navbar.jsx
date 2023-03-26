@@ -13,7 +13,7 @@ const Navbar = () => {
                 <div className="container-fluid">
                     <img
                         className="ms-3 mt-1"
-                        src="./assets/logo.svg"
+                        src="../src/assets/logo.svg"
                         style={{ width: 115, height: 55 }}
                     />
                     <div

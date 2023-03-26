@@ -10,7 +10,7 @@ const ContactUs = () => {
                 <div className="row">
                     <div className="col-5 pt-5">
                         <img
-                            src="./assets/paper-plane.png"
+                            src="../src/assets/paper-plane.png"
                             style={{ width: 306, height: 323 }}
                         />
                     </div>
