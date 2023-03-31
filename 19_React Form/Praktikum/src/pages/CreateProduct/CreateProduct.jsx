@@ -10,6 +10,7 @@ import { useState } from 'react';
 
 function CreateProduct({setData}) {
   const [tableData, setTableData] = useState([])
+  
   setData(tableData)
 
   return (

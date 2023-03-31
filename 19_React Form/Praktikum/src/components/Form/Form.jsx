@@ -6,20 +6,16 @@ import Input from "../../elements/Input/Input";
 import uuid from 'react-uuid';
 
 const Form = ({setTable}) => {
-
-    const initialValues = {
-        productId: uuid(),
-        productName: "",
-        productCathegory: "",
-        productImage: "",
-        productFreshness: "",
-        productDesc: "",
-        productPrice: ""
-    };
     
     const formik = useFormik({
         initialValues: {
-            initialValues
+            productId: uuid(),
+            productName: "",
+            productCathegory: "",
+            productImage: "",
+            productFreshness: "",
+            productDesc: "",
+            productPrice: ""
         },
         validationSchema: Yup.object().shape({
             productName: Yup.string()
