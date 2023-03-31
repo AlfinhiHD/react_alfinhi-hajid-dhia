@@ -17,16 +17,16 @@ function App() {
   //   alert("Welcome bang!")
   // }, [])
 
-  const [datas, setDatas] = useState([])
-  const value = {datas, setDatas}
+  const [products, setProducts] = useState([])
+  const value = {products, setProducts}
 
   return (
     <ProductsContext.Provider value = {value}>
       <Router>
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
-          <Route path="/getstarted" element={<CreateProduct setData={setDatas}  />} />
-          <Route path="/detailproduct/:productId" element={<DetailProduct product={datas} />} />
+          <Route path="/getstarted" element={<CreateProduct />} />
+          <Route path="/detailproduct/:productId" element={<DetailProduct />} />
           {/* render={(props) => <DetailProduct productId={props.match.params.productId} */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>

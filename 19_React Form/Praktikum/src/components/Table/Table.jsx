@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
 import Button from "../../elements/Button/Button";
+import { useContext, useState } from "react";
+import ProductsContext from "../../context/ProductsContext";
+import TableItem from "./TableItem";
 
-const Table = ({ tables, setTable }) => {
-
-    const deleteHandler = (id) => {
-        if (window.confirm('Are you sure you want to delete this item?')) {
-            const filteredTable = tables.filter(table => table.productId != id)
-            setTable([...filteredTable])
-          }
-    }
+const Table = () => {
+    const { products, setProducts } = useContext(ProductsContext)
 
     return (
         <div className="container mt-5">
@@ -25,28 +22,8 @@ const Table = ({ tables, setTable }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {tables.map((table) => (
-                        <tr key={table.productId}>
-                            <td>
-                                <Link to={`/detailproduct/${table.productId}`}>{table.productId}</Link>
-                            </td>
-                            <td>{table.productName}</td>
-                            <td>{table.productCathegory}</td>
-                            <td>{table.productFreshness}</td>
-                            <td>{table.productPrice}</td>
-                            <td>
-                                <Button
-                                className="btn btn-warning" 
-                                label="Edit"/>
-                            </td>
-                            <td>
-                                <Button 
-                                onClick={() => deleteHandler(table.productId)}
-                                className="btn btn-danger" 
-                                label="Delete"/>
-                            </td>
-
-                        </tr>
+                    {products?.map((table) => (
+                        <TableItem key={table.productId} table={table} />
                     ))
                     }
                 </tbody>

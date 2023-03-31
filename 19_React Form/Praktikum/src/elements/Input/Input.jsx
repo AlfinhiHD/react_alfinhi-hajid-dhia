@@ -8,6 +8,7 @@ const Input = (props) => {
             name={props.name}
             value={props.value}
             onChange={props.onChange}
+            onBlur={props.onBlur}
             style={props.style}
         >
         </input>

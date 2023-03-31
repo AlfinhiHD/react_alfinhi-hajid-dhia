@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "../../elements/Button/Button";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Input from "../../elements/Input/Input";
 import uuid from 'react-uuid';
+import ProductsContext from "../../context/ProductsContext";
 
-const Form = ({setTable}) => {
-    
+const Form = () => {
+
+    const {products, setProducts} = useContext(ProductsContext)
+
     const formik = useFormik({
         initialValues: {
             productId: uuid(),
@@ -39,9 +42,8 @@ const Form = ({setTable}) => {
 			),
 		}),
         onSubmit : (values, actions) => {
-            console.log(values);
             const newValues = { ...values, productId: uuid() };
-            setTable((prev) => ([...prev, newValues]))
+            setProducts((prev) => ([...prev, newValues]))
             // actions.resetForm();
         },
     })

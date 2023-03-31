@@ -5,21 +5,19 @@ import Header from '../../components/Header/Header';
 import Form from '../../components/Form/Form';
 import Table from '../../components/Table/Table';
 import RandomNumGen from '../../components/RandomNumGen/RandomNumGen';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import ProductsContext from "../../context/ProductsContext";
 
 
-function CreateProduct({setData}) {
-  const [tableData, setTableData] = useState([])
-  
-  setData(tableData)
+function CreateProduct() {
 
   return (
     <>
       <Navbar />
       <Header />
       <RandomNumGen />
-      <Form setTable={setTableData} />
-      <Table tables={tableData} setTable={setTableData} />
+      <Form/>
+      <Table />
       
     </>
       

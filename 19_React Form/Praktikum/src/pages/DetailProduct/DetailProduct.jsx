@@ -1,10 +1,14 @@
 import { useParams } from "react-router-dom"
+import ProductsContext from "../../context/ProductsContext";
+import { useContext } from "react";
 
 
-const DetailProduct = ({product}) => {
+const DetailProduct = () => {
+
+    const {products, setProducts} = useContext(ProductsContext)
 
     const {productId} = useParams();
-    const item = product.find((item) => item.productId === productId)
+    const item = products.find((item) => item.productId === productId)
 
     return (
         <>
