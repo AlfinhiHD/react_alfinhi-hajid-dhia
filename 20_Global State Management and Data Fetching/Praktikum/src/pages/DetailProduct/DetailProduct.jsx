@@ -1,14 +1,16 @@
 import { useParams } from "react-router-dom"
 import ProductsContext from "../../context/ProductsContext";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 
 const DetailProduct = () => {
 
-    const {products, setProducts} = useContext(ProductsContext)
+    // const {products, setProducts} = useContext(ProductsContext)
+    const products = useSelector((state) => state.products)
 
     const {productId} = useParams();
-    const item = products.find((item) => item.productId === productId)
+    const item = products.listProduct.find((item) => item.productId === productId)
 
     return (
         <>
