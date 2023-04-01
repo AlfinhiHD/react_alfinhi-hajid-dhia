@@ -3,9 +3,12 @@ import Button from "../../elements/Button/Button";
 import { useContext, useState } from "react";
 import ProductsContext from "../../context/ProductsContext";
 import TableItem from "./TableItem";
+import { useSelector } from "react-redux";
 
 const Table = () => {
-    const { products, setProducts } = useContext(ProductsContext)
+    // const { products, setProducts } = useContext(ProductsContext)
+    const products = useSelector((state) => state.products)
+    console.log(products)
 
     return (
         <div className="container mt-5">
@@ -22,30 +25,12 @@ const Table = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {products?.map((table) => (
+                    {products.products?.map((table) => (
                         <TableItem key={table.productId} table={table} />
                     ))
                     }
                 </tbody>
             </table>
-            <input
-                type="text"
-                id="inputCari"
-                placeholder="Search by Product Name"
-                className="form-control w-25"
-            />
-            <div className="mt-3">
-                <Button
-                    type="button"
-                    className="btn btn-primary"
-                    label="Deletion"
-                />
-                <Button
-                    type="button"
-                    className="btn btn-outline-primary"
-                    label="Search"
-                />
-            </div>
         </div>
     );
 }
