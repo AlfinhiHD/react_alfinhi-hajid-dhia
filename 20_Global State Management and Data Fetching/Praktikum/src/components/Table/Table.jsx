@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 const Table = () => {
     // const { products, setProducts } = useContext(ProductsContext)
     const products = useSelector((state) => state.products)
-    console.log(products)
 
     return (
         <div className="container mt-5">
@@ -25,7 +24,7 @@ const Table = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.products?.map((table) => (
+                    {products.listProduct?.map((table) => (
                         <TableItem key={table.productId} table={table} />
                     ))
                     }

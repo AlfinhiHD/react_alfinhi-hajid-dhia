@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import uuid from 'react-uuid';
 
 export const productsSlice = createSlice({
     name: 'products',
     initialState: {
-        products: 
-        [{
+        listProduct: [
+        {
             productId: "e7ce2b97-d0c1-4a75-9c1d-e6dfc8441836",
             productName: "John",
             productCathegory: "Doe",
@@ -13,27 +12,44 @@ export const productsSlice = createSlice({
             productFreshness: "Doe",
             productDesc: "Doe",
             productPrice: "Doe"
-        }]        
-    },
+        },
+        {
+            productId: "e8ce2b97-d0c1-4a75-9c1d-e6dfc8441836",
+            productName: "John",
+            productCathegory: "Doe",
+            productImage: "Doe",
+            productFreshness: "Doe",
+            productDesc: "Doe",
+            productPrice: "Doe"
+        },
+        {
+            productId: "e9ce2b97-d0c1-4a75-9c1d-e6dfc8441836",
+            productName: "John",
+            productCathegory: "Doe",
+            productImage: "Doe",
+            productFreshness: "Doe",
+            productDesc: "Doe",
+            productPrice: "Doe"
+        }
+    ]},
     reducers: {
-        addTodo: (state, actions) => {
-            const product = {
-                productId: uuid(),
-                productName: actions.payload,
-                productCathegory: actions.payload,
-                productImage: actions.payload,
-                productFreshness: actions.payload,
-                productDesc: actions.payload,
-                productPrice: actions.payload
-            }
-
-            return[...state, product]
+        addProduct: (state, actions) => {
+            return {
+                ...state,
+                listProduct: [...state.listProduct, actions.payload],
+            };
+        },
+        deleteProduct: (state, actions) => {
+            state.listProduct = state.listProduct.filter(product => product.productId != actions.payload)
+        },
+        editProduct: (state, actions) => {
+            state.listProduct = state.listProduct.map(product => product.productId === actions.payload.productId ? actions.payload : product)
         }
     }
 }) 
 
 //export action
-export const { addProduct } = productsSlice.actions
+export const { addProduct, deleteProduct, editProduct } = productsSlice.actions
 
 //export reducer
 export default productsSlice.reducer

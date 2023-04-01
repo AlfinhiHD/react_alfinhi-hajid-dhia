@@ -2,31 +2,33 @@ import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import Button from "../../elements/Button/Button"
 import ProductsContext from "../../context/ProductsContext"
+import { useDispatch } from "react-redux"
+import { deleteProduct, editProduct } from "../../redux/products/productsSlice"
 
 const TableItem = ({ table }) => {
     // const { products, setProducts } = useContext(ProductsContext)
 
+    const dispatch = useDispatch();
+
     const [isEditing, setIsEditing] = useState(false)
-    // const [tempdata, setTempData] = useState({})
+    const [tempdata, setTempData] = useState({})
 
 
-    // const editHandler = (table) => {
-    //     setIsEditing(true)
-    //     setTempData(table)
-    // }
+    const editHandler = (table) => {
+        setIsEditing(true)
+        setTempData(table)
+    }
 
-    // const saveHandler = () => {
-    //     setIsEditing(false)
-    //     // const items = products.filter(table => tempdata.productId != table.productId)
-    //     setProducts(products.map(product => product.productId === tempdata.productId ? tempdata : product))
-    // }
+    const saveHandler = () => {
+        setIsEditing(false)
+        dispatch(editProduct(tempdata))
+    }
 
-    // const deleteHandler = (id) => {
-    //     if (window.confirm('Are you sure you want to delete this item?')) {
-    //         const filteredTable = products.filter(table => table.productId != id)
-    //         setProducts([...filteredTable])
-    //     }
-    // }
+    const deleteHandler = (id) => {
+        if (window.confirm('Are you sure you want to delete this item?')) {
+            dispatch(deleteProduct(id))
+        }
+    }
 
     return (
         <tr className={isEditing && "bg-primary"}>

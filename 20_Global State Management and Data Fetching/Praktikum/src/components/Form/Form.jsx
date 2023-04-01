@@ -5,10 +5,12 @@ import * as Yup from 'yup';
 import Input from "../../elements/Input/Input";
 import uuid from 'react-uuid';
 import ProductsContext from "../../context/ProductsContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct } from "../../redux/products/productsSlice";
 
 const Form = () => {
-
-    const {products, setProducts} = useContext(ProductsContext)
+    // const {products, setProducts} = useContext(ProductsContext)
+    const dispatch = useDispatch()
 
     const formik = useFormik({
         initialValues: {
@@ -43,89 +45,10 @@ const Form = () => {
 		}),
         onSubmit : (values, actions) => {
             const newValues = { ...values, productId: uuid() };
-            setProducts((prev) => ([...prev, newValues]))
+            dispatch(addProduct(newValues))
             // actions.resetForm();
         },
     })
-
-    // const formData = {
-    //     productId: uuid(),
-    //     productName: "",
-    //     productCathegory: "",
-    //     productImage: "",
-    //     productFreshness: "",
-    //     productDesc: "",
-    //     productPrice: ""
-    // }
-
-    // const formErrors = {
-    //     productName: "",
-    //     productCathegory: "",
-    //     productImage: "",
-    //     productFreshness: "",
-    //     productDesc: "",
-    //     productPrice: ""
-    // }
-
-    // const [data, setData] = useState(formData)
-    // const [errors, setErrors] = useState(formErrors)
-    // // const [errorMessage, setErrorMessage] = useState('');
-    // const error = {};
-
-    // const handleInput = e => {
-    //     const name = e.target.name;
-    //     const value = e.target.value;
-
-    //     setData((prev) => ({
-    //         ...prev,
-    //         [name]: value
-    //     }))
-
-    //     if (name === "productName") {
-    //         if (value.length > 10) {
-    //             error.productName = "Please input a valid product name";
-    //         }
-    //         else {
-    //             error.productName = ""
-    //         }
-    //         setErrors(error);
-    //     }
-    // }
-
-    // const handleSubmit = e => {
-        
-    //     e.preventDefault();
-
-    //     if (!data.productName) {
-    //         error.productName = "Name is required";
-    //     }
-    //     if (!data.productCathegory) {
-    //         error.productCathegory= "Category is required";
-    //     }
-    //     if (!data.productImage) {
-    //         error.productImage= "Image is required";
-    //     }
-    //     if (!data.productDesc) {
-    //         error.productDesc= "Desc is required";
-    //     }
-    //     if (!data.productPrice) {
-    //         error.productPrice = "Price is required";
-    //     }
-
-    //     if (!data.productFreshness) {
-    //         error.productFreshness = "Freshness is required";
-    //     }
-
-    //     setErrors(error);
-
-    //     if (Object.keys(error).length === 0) {
-    //         setTable((prev) => ([...prev, data]))
-    //         setData(prev => ({...prev, productId: uuid()}))
-    //         alert('Form submitted succesfully')
-    //     }
-        
-    // }
-
     
     return (
         <form onSubmit={formik.handleSubmit} className="container mt-5 w-50" id="productForm">
