@@ -29,14 +29,14 @@ const TableItem = ({ table }) => {
     }
 
     return (
-        <tr>
+        <tr className={isEditing && "bg-primary"}>
             <td>
-                <Link to={`/detailproduct/${table.productId}`}>{table.productId}</Link>
+                <Link className={isEditing && "text-white border-2 border-danger"} to={`/detailproduct/${table.productId}`}>{table.productId}</Link>
             </td>
-            <td suppressContentEditableWarning={true} onInput={(e) => setTempData(prev => ({ ...prev, productName: e.target.textContent }))} contentEditable={isEditing} >{table.productName}</td>
-            <td suppressContentEditableWarning={true} onInput={(e) => setTempData(prev => ({ ...prev, productCathegory: e.target.textContent }))} contentEditable={isEditing} >{table.productCathegory}</td>
-            <td suppressContentEditableWarning={true} onInput={(e) => setTempData(prev => ({ ...prev, productFreshness: e.target.textContent }))} contentEditable={isEditing} >{table.productFreshness}</td>
-            <td suppressContentEditableWarning={true} onInput={(e) => setTempData(prev => ({ ...prev, productPrice: e.target.textContent }))} contentEditable={isEditing} >{table.productPrice}</td>
+            <td className={isEditing && "text-white"} suppressContentEditableWarning={true} onInput={(e) => setTempData(prev => ({ ...prev, productName: e.target.textContent }))} contentEditable={isEditing} >{table.productName}</td>
+            <td className={isEditing && "text-white"} suppressContentEditableWarning={true} onInput={(e) => setTempData(prev => ({ ...prev, productCathegory: e.target.textContent }))} contentEditable={isEditing} >{table.productCathegory}</td>
+            <td className={isEditing && "text-white"} suppressContentEditableWarning={true} onInput={(e) => setTempData(prev => ({ ...prev, productFreshness: e.target.textContent }))} contentEditable={isEditing} >{table.productFreshness}</td>
+            <td className={isEditing && "text-white"} suppressContentEditableWarning={true} onInput={(e) => setTempData(prev => ({ ...prev, productPrice: e.target.textContent }))} contentEditable={isEditing} >{table.productPrice}</td>
             <td>
                 {isEditing ?
                     (<Button
