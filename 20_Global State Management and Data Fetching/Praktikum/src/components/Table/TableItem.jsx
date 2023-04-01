@@ -33,7 +33,12 @@ const TableItem = ({ table }) => {
     return (
         <tr className={isEditing && "bg-primary"}>
             <td>
-                <Link className={isEditing && "text-white border-2 border-danger"} to={`/detailproduct/${table.productId}`}>{table.productId}</Link>
+                <Link 
+                    className={isEditing && "text-white border-2 border-danger"} 
+                    to={`/detailproduct/${table.productId}`}
+                >
+                    {table.productId}
+                </Link>
             </td>
             <td 
                 className={isEditing && "text-white"} 
