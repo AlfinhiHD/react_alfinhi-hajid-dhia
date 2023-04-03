@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import Form from "../../components/Form/Form";
+import Form from "../../../../../20_Global State Management and Data Fetching/Praktikum/src/components/Form/Form";
 
 test("product name input can receive text input and display it on the page", () => {
     const { getByLabelText, getByText } = render(<Form />);
