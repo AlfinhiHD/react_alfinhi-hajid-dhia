@@ -64,6 +64,7 @@ const Form = () => {
                     value={formik.values.productName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    data-testid="productName"
                     className={
                         formik.errors.productName && formik.touched.productName
                             ? 'form-control mt-1 is-invalid'
