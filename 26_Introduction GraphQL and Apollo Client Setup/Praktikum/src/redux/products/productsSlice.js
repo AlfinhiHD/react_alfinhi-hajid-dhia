@@ -4,33 +4,6 @@ export const productsSlice = createSlice({
     name: 'products',
     initialState: {
         listProduct: [
-        {
-            productId: "e7ce2b97-d0c1-4a75-9c1d-e6dfc8441836",
-            productName: "John",
-            productCathegory: "Doe",
-            productImage: "Doe",
-            productFreshness: "Doe",
-            productDesc: "Doe",
-            productPrice: "Doe"
-        },
-        {
-            productId: "e8ce2b97-d0c1-4a75-9c1d-e6dfc8441836",
-            productName: "John",
-            productCathegory: "Doe",
-            productImage: "Doe",
-            productFreshness: "Doe",
-            productDesc: "Doe",
-            productPrice: "Doe"
-        },
-        {
-            productId: "e9ce2b97-d0c1-4a75-9c1d-e6dfc8441836",
-            productName: "John",
-            productCathegory: "Doe",
-            productImage: "Doe",
-            productFreshness: "Doe",
-            productDesc: "Doe",
-            productPrice: "Doe"
-        }
     ]},
     reducers: {
         addProduct: (state, actions) => {

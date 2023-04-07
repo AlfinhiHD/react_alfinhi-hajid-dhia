@@ -8,50 +8,199 @@ import ProductsContext from "../../context/ProductsContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/products/productsSlice";
 
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+
+import { storage } from "../../config/firebaseConfig";
+
+import { gql, useQuery, useMutation } from "@apollo/client";
+
+const GetProductList = gql`
+  query ProductQuery {
+    Product {
+      id
+      name
+      price
+      category
+      description
+      image
+      freshness
+    }
+  }
+`;
+
+const InsertProduct = gql`
+  mutation MyMutation($object: Product_insert_input!) {
+    insert_Product_one(object: $object) {
+      id
+      name
+      description
+    }
+  }
+`;
+
+
 const Form = () => {
-    // const {products, setProducts} = useContext(ProductsContext)
+
     const dispatch = useDispatch()
 
-    const formik = useFormik({
-        initialValues: {
-            productId: uuid(),
-            productName: "",
-            productCathegory: "",
-            productImage: "",
-            productFreshness: "",
-            productDesc: "",
-            productPrice: ""
-        },
-        validationSchema: Yup.object().shape({
-            productName: Yup.string()
-				.matches(/^[a-zA-Z0-9 ]+$/, 'Name must not contain symbols')
-				.max(10, 'Product Name must not exceed 10 characters')
-				.required('The product name field must be filled in'),
-			productCathegory: Yup.string().required(
-				'The product category field must be filled in'
-			),
-			productImage: Yup.mixed().required(
-				'The image of product field must be filled in'
-			),
-			productFreshness: Yup.string().required(
-				'The product freshness field must be filled in'
-			),
-			productDesc: Yup.string()
-				.matches(/^[a-zA-Z0-9 ]+$/, 'Description must not contain symbols')
-				.required('The additional description field must be filled in'),
-			productPrice: Yup.number().required(
-				'The product price field must be filled in'
-			),
-		}),
-        onSubmit : (values, actions) => {
-            const newValues = { ...values, productId: uuid() };
-            dispatch(addProduct(newValues))
-            // actions.resetForm();
-        },
-    })
+    // const { dataSQL, loading, errorSQL } = useQuery(GetProductList);
+    const [insertProduct] = useMutation(InsertProduct, {
+        refetchQueries: [GetProductList],
+    });
+
+    // const [products, setProducts] = useState([]);
     
+    // useEffect(() => {
+    //     if (!loading && !errorSQL) {
+    //       setProducts(dataSQL.Product);
+    //     }
+    //   });
+
+    const [percent, setPercent] = useState(0)
+
+    const formData = {
+        productId: uuid(),
+        productName: "",
+        productCathegory: "",
+        productImage: "",
+        productFreshness: "",
+        productDesc: "",
+        productPrice: ""
+    }
+
+    const formErrors = {
+        productName: "",
+        productCathegory: "",
+        productImage: "",
+        productFreshness: "",
+        productDesc: "",
+        productPrice: ""
+    }
+
+    const [data, setData] = useState(formData)
+    const [errors, setErrors] = useState(formErrors)
+    // const [errorMessage, setErrorMessage] = useState('');
+    const error = {};
+
+    const handleInput = e => {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        if(name === "productImage") {
+            setData((prev) => ({
+                ...prev,
+                [name]: e.target.files[0]
+            }))
+        }
+        else {
+            setData((prev) => ({
+                ...prev,
+                [name]: value
+            }))
+        }
+
+        if (name === "productName") {
+            if (value.length > 10) {
+                error.productName = "Please input a valid product name";
+            }
+            else {
+                error.productName = ""
+            }
+            setErrors(error);
+        }
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        if (!data.productName) {
+            error.productName = "Name is required";
+        }
+        if (!data.productCathegory) {
+            error.productCathegory= "Category is required";
+        }
+        if (!data.productImage) {
+            error.productImage= "Image is required";
+        }
+        if (!data.productDesc) {
+            error.productDesc= "Desc is required";
+        }
+        if (!data.productPrice) {
+            error.productPrice = "Price is required";
+        }
+
+        setErrors(error);
+
+        if (Object.keys(error).length === 0) {
+            console.log(data)
+            // setTable((prev) => ([...prev, data]))
+            // setData(prev => ({...prev, productId: uuid()}))
+
+            handleUploadFile()
+
+        }
+    }
+
+    const handleUploadFile = () => {
+        // handle file ref 
+        const storageRef = ref(storage, `/files/${data.productImage.name}`)
+
+        // handle file upload progess
+        const uploadTask = uploadBytesResumable(storageRef, data.productImage)
+
+        // handle file upload
+        uploadTask.on(
+            "state_changed",
+            
+            // callback ketika upload progress
+            (snapshot) => {
+                const percent = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                )
+
+                //update progress
+                setPercent(percent)
+                console.log(`Progress >>> ${percent}%`)
+            },
+
+            // callback ketika upload gagal
+            (err) => {
+                console.log('error upload file', err)
+            },
+
+            //callback ketika selesai upload
+            () => {
+                // download url
+                getDownloadURL(uploadTask.snapshot.ref)
+                .then(url => {
+
+                    setData(prev => ({ ...prev, productId: uuid(), productImage: url }));
+                    const newValues = { ...data, productId: uuid(), productImage: url };
+                    dispatch(addProduct(newValues))
+
+                    console.log('url download file', url)
+                    insertProduct({
+                        variables: {
+                          object: {
+                            id: uuid(),
+                            name: data.productName,
+                            price: data.productPrice,
+                            description: data.productDesc,
+                            freshness: data.productFreshness,
+                            category: data.productCathegory,
+                            image: url
+                          },
+                        },
+                      });
+                })
+            }
+        )
+    }
+
+    
+
     return (
-        <form onSubmit={formik.handleSubmit} className="container mt-5 w-50" id="productForm">
+        <form onSubmit={handleSubmit} className="container mt-5 w-50" id="productForm">
             <h2>Detail Product</h2>
             <div className="mb-4 mt-4 w-50">
                 <label className="form-label has-success" htmlFor="productName">
@@ -59,20 +208,16 @@ const Form = () => {
                 </label>
                 <Input
                     type="text"
-                    name='productName'
-                    id='productName'
-                    value={formik.values.productName}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className={
-                        formik.errors.productName && formik.touched.productName
-                            ? 'form-control mt-1 is-invalid'
-                            : 'form-control mt-1'
-                    }
+                    name="productName"
+                    // className={`form-control ${validClass}`}
+                    // className="form-control"
+                    className={`form-control ${errors.productName ? "is-invalid" : ""}`}
+                    value={data.productName}
+                    onChange={handleInput}
                 />
-                {formik.errors.productName && formik.touched.productName && (
-                        <small className='text-danger'>{formik.errors.productName}</small>
-                )}
+                <small id="nameError" className="text-danger">
+                    {errors.productName}
+                </small>
             </div>
             <div className="mb-4 w-50">
                 <label className="form-label" htmlFor="productCathegory">
@@ -80,15 +225,10 @@ const Form = () => {
                 </label>
                 <select
                     name="productCathegory"
-                    value={formik.values.productCathegory}
+                    value={data.productCathegory}
+                    className={`form-select ${errors.productCathegory ? "is-invalid" : ""}`}
                     aria-label="Default select example"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className={
-                        formik.errors.productCathegory && formik.touched.productCathegory
-                            ? 'form-control mt-1 is-invalid'
-                            : 'form-control mt-1'
-                    }
+                    onChange={handleInput}
                 >
                     <option disable="" value="" hidden="">
                         Chose...
@@ -103,29 +243,26 @@ const Form = () => {
                         Tools
                     </option>
                 </select>
-                {formik.errors.productCathegory && formik.touched.productCathegory && (
-                        <small className='text-danger'>{formik.errors.productCathegory}</small>
-                )}
+                <small id="cathegoryError" className="text-danger">
+                    {errors.productCathegory}
+                </small>
             </div>
             <div className="mb-4 w-50">
                 <label className="form-label" htmlFor="productImage">
                     Image of Product
                 </label>
                 <input 
+                className={`form-control ${errors.productCathegory ? "is-invalid" : ""}`} 
                 name="productImage" 
-                value={formik.values.productImage} 
+                // value={data.productImage} 
                 type="file" 
-                onChange={formik.handleChange} 
-                onBlur={formik.handleBlur}
-                className={
-                    formik.errors.productImage && formik.touched.productImage
-                        ? 'form-control mt-1 is-invalid'
-                        : 'form-control mt-1'
-                }
+                onChange={handleInput} 
+                accept="image/*"
                 />
-                {formik.errors.productImage && formik.touched.productImage && (
-                        <small className='text-danger'>{formik.errors.productImage}</small>
-                )}
+                <small id="imageError" className="text-danger">
+                    {errors.productImage}
+                </small>
+                <p>{percent}%</p>
             </div>
             <div className="mb-4">
                 <label className="form-label" htmlFor="productFreshness">
@@ -133,44 +270,37 @@ const Form = () => {
                 </label>
                 <div className="form-check">
                     <input
-                        id="productFreshness"
+                        id="new"
                         name="productFreshness"
                         className="form-check-input"
                         type="radio"
-                        value="Brand New"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
+                        defaultValue="Brand New"
+                        onChange={handleInput}
                     />
                     <label className="form-check-label" htmlFor="new">Brand New</label>
                 </div>
                 <div className="form-check">
                     <input
-                        id="productFreshness"
+                        id="second"
                         name="productFreshness"
                         className="form-check-input"
                         type="radio"
-                        value="Second Hand"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
+                        defaultValue="Second Hand"
+                        onChange={handleInput}
                     />
                     <label className="form-check-label" htmlFor="second">Second Hand</label>
                 </div>
                 <div className="form-check">
                     <input
-                        id="productFreshness"
+                        id="refurbished"
                         name="productFreshness"
                         className="form-check-input"
                         type="radio"
-                        value="Refurbished"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        
+                        defaultValue="Refurbished"
+                        onChange={handleInput}
                     />
                     <label className="form-check-label" htmlFor="refurbished">Refurbished</label>
                 </div>
-                {formik.errors.productFreshness && formik.touched.productFreshness && (
-                        <small className='text-danger'>{formik.errors.productFreshness}</small>
-                )}
             </div>
             <div className="mb-4">
                 <label className="form-label" htmlFor="productDesc">
@@ -178,19 +308,14 @@ const Form = () => {
                 </label>
                 <textarea
                     rows={5}
+                    className={`form-control ${errors.productDesc ? "is-invalid" : ""}`}
                     name="productDesc"
-                    value={formik.values.productDesc}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className={
-                        formik.errors.productDesc && formik.touched.productDesc
-                            ? 'form-control mt-1 is-invalid'
-                            : 'form-control mt-1'
-                    }
+                    value={data.productDesc}
+                    onChange={handleInput}
                 />
-                {formik.errors.productDesc && formik.touched.productDesc && (
-                        <small className='text-danger'>{formik.errors.productDesc}</small>
-                )}
+                <small id="descError" className="text-danger">
+                    {errors.productDesc}
+                </small>
             </div>
             <div className="mb-4 w-50">
                 <label className="form-label" htmlFor="productPrice">
@@ -198,20 +323,14 @@ const Form = () => {
                 </label>
                 <input 
                 type="number" 
-                // className={`form-control ${errors.productPrice ? "is-invalid" : ""}`} 
+                className={`form-control ${errors.productPrice ? "is-invalid" : ""}`} 
                 name="productPrice" 
-                value={formik.values.productPrice} 
-                onChange={formik.handleChange} 
-                onBlur={formik.handleBlur}
-                className={
-                    formik.errors.productPrice && formik.touched.productPrice
-                        ? 'form-control mt-1 is-invalid'
-                        : 'form-control mt-1'
-                }
+                value={data.productPrice} 
+                onChange={handleInput} 
                 />
-                {formik.errors.productPrice && formik.touched.productPrice && (
-                        <small className='text-danger'>{formik.errors.productPrice}</small>
-                )}
+                <small id="priceError" className="text-danger" >
+                    {errors.productPrice}
+                </small>
             </div>
             <Button
                 type="submit"

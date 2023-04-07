@@ -33,40 +33,47 @@ const TableItem = ({ table }) => {
     return (
         <tr className={isEditing && "bg-primary"}>
             <td>
-                <Link 
-                    className={isEditing && "text-white border-2 border-danger"} 
-                    to={`/detailproduct/${table.productId}`}
+                <Link
+                    className={isEditing && "text-white border-2 border-danger"}
+                    to={`/detailproduct/${table.id}`}
                 >
-                    {table.productId}
+                    {table.id}
                 </Link>
             </td>
-            <td 
-                className={isEditing && "text-white"} 
-                suppressContentEditableWarning={true} 
-                onInput={(e) => setTempData(prev => ({ ...prev, productName: e.target.textContent }))} 
+            <td
+                className={isEditing && "text-white"}
+                suppressContentEditableWarning={true}
+                onInput={(e) => setTempData(prev => ({ ...prev, productName: e.target.textContent }))}
                 contentEditable={isEditing} >
-                    {table.productName}
+                {table.name}
             </td>
-            <td 
-                className={isEditing && "text-white"} 
-                suppressContentEditableWarning={true} 
-                onInput={(e) => setTempData(prev => ({ ...prev, productCathegory: e.target.textContent }))} 
+            <td
+                className={isEditing && "text-white"}
+                suppressContentEditableWarning={true}
+                onInput={(e) => setTempData(prev => ({ ...prev, productCathegory: e.target.textContent }))}
                 contentEditable={isEditing} >
-                    {table.productCathegory}
+                {table.category}
             </td>
-            <td 
-                className={isEditing && "text-white"} 
-                suppressContentEditableWarning={true} 
-                onInput={(e) => setTempData(prev => ({ ...prev, productFreshness: e.target.textContent }))} 
-                contentEditable={isEditing} >
-                    {table.productFreshness}
+            <td>
+                <img
+                    style={{ width: '300px', height: '200px' }}
+                    src={table.image}
+                    alt="image.jpg"
+                />
             </td>
-            <td 
-                className={isEditing && "text-white"} 
-                suppressContentEditableWarning={true} 
-                onInput={(e) => setTempData(prev => ({ ...prev, productPrice: e.target.textContent }))} 
+            <td
+                className={isEditing && "text-white"}
+                suppressContentEditableWarning={true}
+                onInput={(e) => setTempData(prev => ({ ...prev, productFreshness: e.target.textContent }))}
                 contentEditable={isEditing} >
-                    {table.productPrice}
+                {table.freshness}
+            </td>
+            <td
+                className={isEditing && "text-white"}
+                suppressContentEditableWarning={true}
+                onInput={(e) => setTempData(prev => ({ ...prev, productPrice: e.target.textContent }))}
+                contentEditable={isEditing} >
+                {table.price}
             </td>
             <td>
                 {isEditing ?

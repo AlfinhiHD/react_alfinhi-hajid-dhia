@@ -4,10 +4,29 @@ import { useContext, useState } from "react";
 import ProductsContext from "../../context/ProductsContext";
 import TableItem from "./TableItem";
 import { useSelector } from "react-redux";
+import {gql, useMutation, useQuery} from "@apollo/client"
+import { useEffect } from "react";
+
+const GetProductList = gql`
+query MyQuery {
+    Product {
+    category
+    name
+    id
+    image
+    price
+    freshness
+    }
+}`;
 
 const Table = () => {
+
+    const {data, loading, error} = useQuery(GetProductList)
+
+
     // const { products, setProducts } = useContext(ProductsContext)
-    const products = useSelector((state) => state.products)
+    // const products = useSelector((state) => state.products)
+    // console.log(products)
 
     return (
         <div className="container mt-5">
@@ -18,13 +37,14 @@ const Table = () => {
                         <th scope="col">No</th>
                         <th scope="col">Product Name</th>
                         <th scope="col">Product Category</th>
+                        <th scope="col">Product Image</th>
                         <th scope="col">Product Freshness</th>
                         <th scope="col">Product Price</th>
                         <th scope="col" colSpan={2}>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {products.listProduct?.map((table) => (
+                    {data?.Product.map((table) => (
                         <TableItem key={table.productId} table={table} />
                     ))
                     }
