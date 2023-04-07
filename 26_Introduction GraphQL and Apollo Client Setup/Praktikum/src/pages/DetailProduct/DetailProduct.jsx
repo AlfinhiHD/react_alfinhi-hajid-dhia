@@ -31,24 +31,19 @@ const DetailProduct = () => {
     }`;
 
     const {data, loading, error} = useQuery(GetProductList, {
-        variables: {productId}
     })
 
     if (loading) {
         return <div>Loading...</div>;
-    }
-
-    if (error) {
+    } if (error) {
         return <div>Error: {error.message}</div>;
-    }
-
-    if (!data?.Product?.length) {
+    } if (!data?.Product?.length) {
         return <div>Product not found</div>;
     }
 
     console.log(data)
 
-     const product = data.Product[0];
+    const product = data.Product[0];
 
     return (
         <>
