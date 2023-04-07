@@ -33,19 +33,34 @@ const DetailProduct = () => {
     const {data, loading, error} = useQuery(GetProductList, {
         variables: {productId}
     })
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+
+    if (!data?.Product?.length) {
+        return <div>Product not found</div>;
+    }
+
     console.log(data)
+
+     const product = data.Product[0];
 
     return (
         <>
         <div className="container mt-5">
             <h2>Detail Product</h2>
-            <h3>{data.Product.id}</h3>
-            <h5> Product Name : {data.Product.name}</h5>
-            <h5> Product Cathegory : {data.Product.category}</h5>
-            <h5> Product Image : {data.Product.image}</h5>
-            <h5> Product Freshness : {data.Product.freshness}</h5>
-            <h5> Product Description : {data.Product.description}</h5>
-            <h5> Product Price : {data.Product.price}</h5>
+            <h3>{product.id}</h3>
+            <h5> Product Name : {product.name}</h5>
+            <h5> Product Cathegory : {product.category}</h5>
+            <h5> Product Image : {product.image}</h5>
+            <h5> Product Freshness : {product.freshness}</h5>
+            <h5> Product Description : {product.description}</h5>
+            <h5> Product Price : {product.price}</h5>
         </div>
         </>
     )
