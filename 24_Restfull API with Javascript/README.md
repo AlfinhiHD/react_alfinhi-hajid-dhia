@@ -29,4 +29,3 @@ Dengan menggunakan mock API, pengembang dapat menguji dan memvalidasi kode merek
 - MockAPI
 - Mocky
 - Postman Mock Server
-```
