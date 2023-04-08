@@ -15,7 +15,7 @@ const Hero = () => {
                         We are team of talented designers making websites with <br /> Bootstrap
                     </p>
                     <div className="hero-items">
-                        <button onClick={() => navigate('/getstarted')}>Get Started</button>
+                        <button onClick={() => navigate('/login')}>Get Started</button>
                         <span>Watch Video</span>
                     </div>
                 </div>

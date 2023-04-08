@@ -8,6 +8,7 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import DetailProduct from './pages/DetailProduct/DetailProduct';
 import ProductsContext from './context/ProductsContext';
+import LoginPage from './pages/LoginPage/loginPage';
 
 
 
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/" element={<LandingPage />} />
           <Route path="/getstarted" element={<CreateProduct />} />
           <Route path="/detailproduct/:productId" element={<DetailProduct />} />
+          <Route path="/login" element={<LoginPage />} />
           {/* render={(props) => <DetailProduct productId={props.match.params.productId} */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
