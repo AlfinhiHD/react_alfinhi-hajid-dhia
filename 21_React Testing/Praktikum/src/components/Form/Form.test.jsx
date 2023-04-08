@@ -7,22 +7,22 @@ import store from '../../redux/store'
 import Form from "./Form";
 
 describe('Form', () => {
-     
-    /* Testing Product Name dapat menerima input teks dan menampilkannya di halaman. */
-    test("should input the text for the product name and display it properly", () => {
-         render(
-              <Provider store={store}>
-                   <BrowserRouter>
-                        <Form />
-                   </BrowserRouter>
-              </Provider>
-         );
 
-         const input = screen.getByLabelText("Product Name")
-         fireEvent.change(
-              input,
-              {target: {value: "Sabun Mandi"}}
-         )
-         expect(input.value).toBe("Sabun Mandi")
-    })    
+     /* Testing Product Name dapat menerima input teks dan menampilkannya di halaman. */
+     test("should input the text for the product name and display it properly", () => {
+          render(
+               <BrowserRouter>
+                    <Provider store={store}>
+                         <Form />
+                    </Provider>
+               </BrowserRouter>
+          );
+
+          const input = screen.getByLabelText("Product Name")
+          fireEvent.change(
+               input,
+               { target: { value: "Sabun Mandi" } }
+          )
+          expect(input.value).toBe("Sabun Mandi")
+     })
 })
