@@ -4,14 +4,57 @@ import Button from "../../elements/Button/Button"
 import ProductsContext from "../../context/ProductsContext"
 import { useDispatch } from "react-redux"
 import { deleteProduct, editProduct } from "../../redux/products/productsSlice"
+import { gql, useMutation } from "@apollo/client"
 
 const TableItem = ({ table }) => {
-    // const { products, setProducts } = useContext(ProductsContext)
 
+    // const { products, setProducts } = useContext(ProductsContext)
     const dispatch = useDispatch();
 
     const [isEditing, setIsEditing] = useState(false)
     const [tempdata, setTempData] = useState({})
+
+    // console.log(tempdata)
+
+    const UpdateProduct = gql`
+    mutation MyMutation($id: String!, $name: String!, $price: String!, $category: String!, $freshness: String!) {
+        update_Product_by_pk(pk_columns: {id: $id}, _set: {name: $name, price: $price, category: $category, freshness: $freshness}) {
+          id
+          name
+          price
+        }
+      }
+    `;
+
+    const GetProductList = gql`
+    query ProductQuery {
+        Product {
+        id
+        name
+        price
+        category
+        description
+        image
+        freshness
+        }
+    }
+    `;
+
+    const HapusProduct = gql`
+        mutation MyQuery($id: String!) {
+        delete_Product_by_pk(id: $id) {
+            id
+        }
+        }
+    `;
+
+    const [hapusProduct] = useMutation(HapusProduct, {
+        refetchQueries: [GetProductList],
+    });
+
+    const [updateProduct] = useMutation(UpdateProduct, {
+        refetchQueries: [GetProductList],
+    });
 
 
     const editHandler = (table) => {
@@ -21,12 +64,33 @@ const TableItem = ({ table }) => {
 
     const saveHandler = () => {
         setIsEditing(false)
+        console.log(tempdata)
         dispatch(editProduct(tempdata))
+        updateProduct({
+            variables: {
+                    id: tempdata.id,
+                    name: tempdata.name,
+                    price: tempdata.price,
+                    freshness: tempdata.freshness,
+                    category: tempdata.category
+            },
+        });
+
     }
 
     const deleteHandler = (id) => {
+
+        console.log(id)
+
         if (window.confirm('Are you sure you want to delete this item?')) {
             dispatch(deleteProduct(id))
+
+            hapusProduct({
+                variables: {
+                    id: id
+                }
+            })
+
         }
     }
 
@@ -43,14 +107,14 @@ const TableItem = ({ table }) => {
             <td
                 className={isEditing && "text-white"}
                 suppressContentEditableWarning={true}
-                onInput={(e) => setTempData(prev => ({ ...prev, productName: e.target.textContent }))}
+                onInput={(e) => setTempData(prev => ({ ...prev, name: e.target.textContent }))}
                 contentEditable={isEditing} >
                 {table.name}
             </td>
             <td
                 className={isEditing && "text-white"}
                 suppressContentEditableWarning={true}
-                onInput={(e) => setTempData(prev => ({ ...prev, productCathegory: e.target.textContent }))}
+                onInput={(e) => setTempData(prev => ({ ...prev, cathegory: e.target.textContent }))}
                 contentEditable={isEditing} >
                 {table.category}
             </td>
@@ -64,14 +128,14 @@ const TableItem = ({ table }) => {
             <td
                 className={isEditing && "text-white"}
                 suppressContentEditableWarning={true}
-                onInput={(e) => setTempData(prev => ({ ...prev, productFreshness: e.target.textContent }))}
+                onInput={(e) => setTempData(prev => ({ ...prev, freshness: e.target.textContent }))}
                 contentEditable={isEditing} >
                 {table.freshness}
             </td>
             <td
                 className={isEditing && "text-white"}
                 suppressContentEditableWarning={true}
-                onInput={(e) => setTempData(prev => ({ ...prev, productPrice: e.target.textContent }))}
+                onInput={(e) => setTempData(prev => ({ ...prev, price: e.target.textContent }))}
                 contentEditable={isEditing} >
                 {table.price}
             </td>
@@ -90,7 +154,7 @@ const TableItem = ({ table }) => {
             </td>
             <td>
                 <Button
-                    onClick={() => deleteHandler(table.productId)}
+                    onClick={() => deleteHandler(table.id)}
                     className="btn btn-danger"
                     label="Delete" />
             </td>

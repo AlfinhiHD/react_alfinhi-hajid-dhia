@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/products/productsSlice";
 
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-
 import { storage } from "../../config/firebaseConfig";
 
 import { gql, useQuery, useMutation } from "@apollo/client";
