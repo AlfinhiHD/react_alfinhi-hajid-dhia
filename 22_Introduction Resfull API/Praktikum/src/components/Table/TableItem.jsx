@@ -4,17 +4,9 @@ import Button from "../../elements/Button/Button"
 import ProductsContext from "../../context/ProductsContext"
 import { useDispatch } from "react-redux"
 import { deleteProduct, editProduct } from "../../redux/products/productsSlice"
-import axios from "axios"
 
 const TableItem = ({ table }) => {
     // const { products, setProducts } = useContext(ProductsContext)
-
-
-    const url = "https://64318b893adb1596516ee16e.mockapi.io/products"
-
-    axios.get(url)
-    .then(response => console.log(response.data))
-    .catch(error => console.error(error))
 
     const dispatch = useDispatch();
 
