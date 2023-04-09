@@ -1,6 +1,8 @@
 import './App.css'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
+
 
 function App() {
 
