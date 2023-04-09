@@ -7,6 +7,10 @@ import { test, describe, expect } from "vitest";
 import store from '../../redux/store'
 import Form from "./Form";
 
+/**
+ * @vitest-environment jsdom
+ */
+
 describe('Form', () => {
 
      /* Testing Product Name dapat menerima input teks dan menampilkannya di halaman. */
