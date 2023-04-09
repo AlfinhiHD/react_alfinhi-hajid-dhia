@@ -44,7 +44,7 @@ const Form = () => {
 
     // const { dataSQL, loading, errorSQL } = useQuery(GetProductList);
     const [insertProduct] = useMutation(InsertProduct, {
-        refetchQueries: [GetProductList],
+        refetchQueries: [{ query: GetProductList}],
     });
 
     // const [products, setProducts] = useState([]);

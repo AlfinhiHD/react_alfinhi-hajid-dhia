@@ -17,8 +17,9 @@ const TableItem = ({ table }) => {
     // console.log(tempdata)
 
     const UpdateProduct = gql`
-    mutation MyMutation($id: String!, $name: String!, $price: String!, $category: String!, $freshness: String!) {
-        update_Product_by_pk(pk_columns: {id: $id}, _set: {name: $name, price: $price, category: $category, freshness: $freshness}) {
+    mutation MyMutation($id: String!, $object: Product_set_input!) {
+        update_Product_by_pk(pk_columns: {id: $id}, 
+        _set: $object) {
           id
           name
           price
@@ -49,11 +50,11 @@ const TableItem = ({ table }) => {
     `;
 
     const [hapusProduct] = useMutation(HapusProduct, {
-        refetchQueries: [GetProductList],
+        refetchQueries: [{ query: GetProductList}],
     });
 
     const [updateProduct] = useMutation(UpdateProduct, {
-        refetchQueries: [GetProductList],
+        refetchQueries: [{ query: GetProductList}],
     });
 
 
@@ -68,11 +69,13 @@ const TableItem = ({ table }) => {
         dispatch(editProduct(tempdata))
         updateProduct({
             variables: {
-                    id: tempdata.id,
+                id: tempdata.id,
+                object: {
                     name: tempdata.name,
                     price: tempdata.price,
                     freshness: tempdata.freshness,
                     category: tempdata.category
+                }
             },
         });
 
@@ -114,7 +117,7 @@ const TableItem = ({ table }) => {
             <td
                 className={isEditing && "text-white"}
                 suppressContentEditableWarning={true}
-                onInput={(e) => setTempData(prev => ({ ...prev, cathegory: e.target.textContent }))}
+                onInput={(e) => setTempData(prev => ({ ...prev, category: e.target.textContent }))}
                 contentEditable={isEditing} >
                 {table.category}
             </td>
