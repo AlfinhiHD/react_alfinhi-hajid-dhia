@@ -13,6 +13,8 @@ const Form = () => {
     // const {products, setProducts} = useContext(ProductsContext)
     const dispatch = useDispatch()
 
+    const url = 'https://64318b893adb1596516ee16e.mockapi.io/products'
+
     const formik = useFormik({
         initialValues: {
             productId: uuid(),

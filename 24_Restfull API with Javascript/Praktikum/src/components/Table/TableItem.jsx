@@ -23,15 +23,29 @@ const TableItem = ({ table }) => {
     const saveHandler = () => {
         setIsEditing(false)
         dispatch(editProduct(tempdata))
+
+        const urlEdit = `https://64318b893adb1596516ee16e.mockapi.io/products/${tempdata.productId}`
+        axios.put(urlEdit, {
+            productName: tempdata.productName,
+            productCathegory: tempdata.productCathegory,
+            productImage: tempdata.productImage,
+            productFreshness: tempdata.productFreshness,
+            productDesc: tempdata.productDesc,
+            productPrice: tempdata.productPrice
+        })
+        .then((response) => (
+            console.log(response.data)
+        ))
+        .catch((error) => console.log(error))
     }
 
     const deleteHandler = (id) => {
         if (window.confirm('Are you sure you want to delete this item?')) {
             dispatch(deleteProduct(id))
 
-            const url = `https://64318b893adb1596516ee16e.mockapi.io/products/${id}`
+            const urlDelete = `https://64318b893adb1596516ee16e.mockapi.io/products/${id}`
 
-            axios.delete(url)
+            axios.delete(urlDelete)
             .then((response) => {
             console.log(response)
             })
