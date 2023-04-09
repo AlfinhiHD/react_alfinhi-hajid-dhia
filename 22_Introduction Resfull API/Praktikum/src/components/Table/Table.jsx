@@ -31,7 +31,8 @@ const Table = () => {
           console.error(error);
         }
     };
-      useEffect(() => {
+    
+    useEffect(() => {
         fetchData();
     }, []);
 
