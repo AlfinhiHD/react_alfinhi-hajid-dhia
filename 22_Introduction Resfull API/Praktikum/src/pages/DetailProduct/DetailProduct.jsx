@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-
 const DetailProduct = () => {
 
     // const {products, setProducts} = useContext(ProductsContext)
@@ -22,7 +21,7 @@ const DetailProduct = () => {
             .then((response) => {
                 setFakeData(response.data);
             })
-            .catch((error) => console.error(error));
+            .catch((error) => console.log(error));
     }, [url, productId, fakedata]);
 
     // const item = products.listProduct.find((item) => item.productId === productId)

@@ -7,6 +7,7 @@ import uuid from 'react-uuid';
 import ProductsContext from "../../context/ProductsContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/products/productsSlice";
+import axios from "axios";
 
 const Form = () => {
     // const {products, setProducts} = useContext(ProductsContext)
@@ -47,6 +48,19 @@ const Form = () => {
             const newValues = { ...values, productId: uuid() };
             dispatch(addProduct(newValues))
             // actions.resetForm();
+
+            axios.post(url, {
+                productName: values.productName,
+                productCathegory: values.productCathegory,
+                productImage: values.productImage,
+                productFreshness: values.productFreshness,
+                productDesc: values.productDesc,
+                productPrice: values.productPrice
+            })
+            .then((response) => (
+                console.log(response.data)
+            ))
+            .catch((error) => console.log(error))
         },
     })
     

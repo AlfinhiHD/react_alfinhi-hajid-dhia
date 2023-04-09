@@ -4,6 +4,7 @@ import Button from "../../elements/Button/Button"
 import ProductsContext from "../../context/ProductsContext"
 import { useDispatch } from "react-redux"
 import { deleteProduct, editProduct } from "../../redux/products/productsSlice"
+import axios from "axios";
 
 const TableItem = ({ table }) => {
     // const { products, setProducts } = useContext(ProductsContext)
@@ -27,6 +28,14 @@ const TableItem = ({ table }) => {
     const deleteHandler = (id) => {
         if (window.confirm('Are you sure you want to delete this item?')) {
             dispatch(deleteProduct(id))
+
+            const url = `https://64318b893adb1596516ee16e.mockapi.io/products/${id}`
+
+            axios.delete(url)
+            .then((response) => {
+            console.log(response)
+            })
+            .catch((error) => console.log(error))
         }
     }
 
