@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import Hero from '../../components/Hero/Hero'
 import Newsletter from '../../components/Newsletter/Newsletter'
 import Footer from '../../components/Footer/Footer'
+import ProductList from '../../components/ProductList/ProductList'
 
 function LandingPage() {
 
@@ -25,6 +26,7 @@ function LandingPage() {
             
             <Navbar />
             <Hero />
+            <ProductList />
             <Newsletter />
             <Footer />
         </>

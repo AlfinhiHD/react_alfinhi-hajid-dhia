@@ -42,18 +42,9 @@ const Form = () => {
 
     const dispatch = useDispatch()
 
-    // const { dataSQL, loading, errorSQL } = useQuery(GetProductList);
     const [insertProduct] = useMutation(InsertProduct, {
         refetchQueries: [{ query: GetProductList}],
     });
-
-    // const [products, setProducts] = useState([]);
-    
-    // useEffect(() => {
-    //     if (!loading && !errorSQL) {
-    //       setProducts(dataSQL.Product);
-    //     }
-    //   });
 
     const [percent, setPercent] = useState(0)
 
@@ -78,7 +69,6 @@ const Form = () => {
 
     const [data, setData] = useState(formData)
     const [errors, setErrors] = useState(formErrors)
-    // const [errorMessage, setErrorMessage] = useState('');
     const error = {};
 
     const handleInput = e => {
@@ -141,35 +131,25 @@ const Form = () => {
     }
 
     const handleUploadFile = () => {
-        // handle file ref 
         const storageRef = ref(storage, `/files/${data.productImage.name}`)
-
-        // handle file upload progess
         const uploadTask = uploadBytesResumable(storageRef, data.productImage)
 
-        // handle file upload
         uploadTask.on(
             "state_changed",
-            
-            // callback ketika upload progress
+
             (snapshot) => {
                 const percent = Math.round(
                     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
                 )
-
-                //update progress
                 setPercent(percent)
                 console.log(`Progress >>> ${percent}%`)
             },
 
-            // callback ketika upload gagal
             (err) => {
                 console.log('error upload file', err)
             },
 
-            //callback ketika selesai upload
             () => {
-                // download url
                 getDownloadURL(uploadTask.snapshot.ref)
                 .then(url => {
 
@@ -197,7 +177,6 @@ const Form = () => {
     }
 
     
-
     return (
         <form onSubmit={handleSubmit} className="container mt-5 w-50" id="productForm">
             <h2>Detail Product</h2>
@@ -208,8 +187,6 @@ const Form = () => {
                 <Input
                     type="text"
                     name="productName"
-                    // className={`form-control ${validClass}`}
-                    // className="form-control"
                     className={`form-control ${errors.productName ? "is-invalid" : ""}`}
                     value={data.productName}
                     onChange={handleInput}
@@ -253,7 +230,6 @@ const Form = () => {
                 <input 
                 className={`form-control ${errors.productCathegory ? "is-invalid" : ""}`} 
                 name="productImage" 
-                // value={data.productImage} 
                 type="file" 
                 onChange={handleInput} 
                 accept="image/*"
