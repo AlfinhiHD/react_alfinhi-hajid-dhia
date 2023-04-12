@@ -32,7 +32,6 @@ function App() {
               <Route path="/detailproduct/:productId" element={<DetailProduct />} />
           </Route>
           <Route path="/login" element={<LoginPage />} />
-          {/* render={(props) => <DetailProduct productId={props.match.params.productId} */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
