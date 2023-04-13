@@ -25,7 +25,7 @@ const Form = () => {
         validationSchema: Yup.object().shape({
             productName: Yup.string()
 				.matches(/^[a-zA-Z0-9 ]+$/, 'Name must not contain symbols')
-				.max(10, 'Product Name must not exceed 10 characters')
+				.max(25, 'Product Name must not exceed 25 characters')
 				.required('The product name field must be filled in'),
 			productCathegory: Yup.string().required(
 				'The product category field must be filled in'
@@ -64,7 +64,6 @@ const Form = () => {
                     value={formik.values.productName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    data-testid="productName"
                     className={
                         formik.errors.productName && formik.touched.productName
                             ? 'form-control mt-1 is-invalid'
@@ -218,7 +217,7 @@ const Form = () => {
                 type="submit"
                 className="btn btn-primary w-100 mt-5"
                 label="Submit"
-            />
+            />  
         </form>
     );
 }
