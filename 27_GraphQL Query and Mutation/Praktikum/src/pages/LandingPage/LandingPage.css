@@ -83,6 +83,21 @@ nav {
     margin-top: 57.8px;
 }
 
+.productlist > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.productlist > div > h3 {
+    color: #37517E;
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+}
+
 .newsletter {
     height: 239px;
     background: #F3F5FA;

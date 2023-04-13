@@ -1,6 +1,9 @@
-
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+
+    const navigate = useNavigate();
+
     return (
         <header>
             <div className="container-fluid g-0">
@@ -10,7 +13,9 @@ const Navbar = () => {
                     </div>
                     <div className="col-5 row justify-content-end">
                     <div className="col-2">
-                        <button className="btn btn-primary">Home</button>
+                        <button
+                        onClick={() => navigate('/')}
+                        className="btn btn-primary">Home</button>
                     </div>
                     <div className="col-2 align-self-center" >
                         <a className="nav-link text-primary" href="#">

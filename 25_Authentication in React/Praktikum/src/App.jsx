@@ -8,7 +8,7 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import DetailProduct from './pages/DetailProduct/DetailProduct';
 import ProductsContext from './context/ProductsContext';
-import LoginPage from './pages/LoginPage/loginPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 import PrivateRoute from './routes/PrivateRoute';
 
 

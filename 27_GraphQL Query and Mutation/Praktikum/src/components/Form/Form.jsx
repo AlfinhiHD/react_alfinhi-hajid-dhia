@@ -38,7 +38,7 @@ const InsertProduct = gql`
 `;
 
 
-const Form = () => {
+const Form = ({product}) => {
 
     const dispatch = useDispatch()
 
@@ -195,7 +195,6 @@ const Form = () => {
             }
         )
     }
-
     
 
     return (
