@@ -1,5 +1,6 @@
 import './ProductList.css'
 import Card from "../Card/Card";
+import BarLoader from "react-spinners/BarLoader";
 
 import { gql, useMutation, useQuery } from "@apollo/client"
 
@@ -19,6 +20,15 @@ query MyQuery {
 const ProductList = () => {
 
     const { data, loading, error } = useQuery(GetProductList)
+
+    
+    if (loading) {
+        return (
+            <div className='mt-5 row justify-content-center'>
+                <BarLoader color="#36d7b7" />
+            </div>
+        );
+    }
 
     return (
         <>

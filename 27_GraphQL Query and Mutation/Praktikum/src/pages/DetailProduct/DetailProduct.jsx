@@ -163,16 +163,6 @@ const DetailProduct = () => {
 
     return (
         <div className="container">
-            {/* <div className="container mt-5">
-                <h2>Detail Product</h2>
-                <h3>{data.id}</h3>
-                <h5> Product Name : {data.name}</h5>
-                <h5> Product Cathegory : {data.category}</h5>
-                <h5> Product Image : {data.image}</h5>
-                <h5> Product Freshness : {data.freshness}</h5>
-                <h5> Product Description : {data.description}</h5>
-                <h5> Product Price : {data.price}</h5>
-            </div> */}
             <form onSubmit={handleSubmit} className="container mt-5 w-50" id="productForm">
                 <h2>Detail Product</h2>
                 <div className="mb-4 mt-4 w-50">
@@ -298,12 +288,12 @@ const DetailProduct = () => {
                 </div>
                 <Button
                     onClick={handleEdit}
-                    className="btn btn-warning mt-5"
+                    className="btn btn-warning me-5 mb-5"
                     label="Edit"
                 />
                 <Button
                     onClick={() => handleDelete(dataEdit.productId)}
-                    className="btn btn-danger mt-5"
+                    className="btn btn-danger ms-5 mb-5"
                     label="Delete"
                 />
             </form>
