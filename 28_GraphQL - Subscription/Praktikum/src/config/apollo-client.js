@@ -1,5 +1,5 @@
 // Remove the apollo-boost import and change to this:
-import ApolloClient from '@apollo/client'
+import { ApolloClient } from '@apollo/client';
 import { split } from '@apollo/client';
 // Setup the network "links"
 import { WebSocketLink } from '@apollo/client/link/ws';

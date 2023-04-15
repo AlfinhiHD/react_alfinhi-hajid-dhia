@@ -60,17 +60,5 @@ export const HapusProduct = gql`
     }
 `;
 
-export const SubscriptionProduct = gql`
-subscription MySubscription {
-  Product {
-    category
-    description
-    freshness
-    id
-    image
-    name
-    price
-  }
-}
-`;
+
 

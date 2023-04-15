@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 
 export const GetProductList = gql`
-subsription MyQuery {
+query MyQuery {
     Product {
     category
     name
@@ -58,4 +58,18 @@ export const HapusProduct = gql`
         id
     }
     }
+`;
+
+export const SubscriptionProduct = gql`
+subscription MySubscription {
+  Product {
+    category
+    description
+    freshness
+    id
+    image
+    name
+    price
+  }
+}
 `;

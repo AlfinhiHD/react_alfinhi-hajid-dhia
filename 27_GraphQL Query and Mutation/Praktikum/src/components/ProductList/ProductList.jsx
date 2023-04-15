@@ -7,7 +7,7 @@ import Input from '../../elements/Input/Input';
 import { useState } from 'react';
 import Button from '../../elements/Button/Button';
 
-import { GetSearchProductList, SubscriptionProduct } from "../../helpers/gqlHasura"
+import { GetSearchProductList } from "../../helpers/gqlHasura"
 
 
 const ProductList = () => {
