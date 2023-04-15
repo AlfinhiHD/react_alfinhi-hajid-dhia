@@ -4,8 +4,8 @@ import Button from "../../elements/Button/Button"
 import ProductsContext from "../../context/ProductsContext"
 import { useDispatch } from "react-redux"
 import { deleteProduct, editProduct } from "../../redux/products/productsSlice"
-import { gql, useMutation } from "@apollo/client"
-import { GetProductList, HapusProduct, UpdateProduct } from "../../helpers/gqlHasura"
+import { gql, useMutation, useSubscription } from "@apollo/client"
+import { GetProductList, HapusProduct, SubscriptionProduct, UpdateProduct } from "../../helpers/gqlHasura"
 
 const TableItem = ({ table }) => {
 
@@ -24,6 +24,8 @@ const TableItem = ({ table }) => {
     const [updateProduct] = useMutation(UpdateProduct, {
         refetchQueries: [{ query: GetProductList}],
     });
+
+    const { data, loading, error } = useSubscription(SubscriptionProduct)
 
 
     const editHandler = (table) => {

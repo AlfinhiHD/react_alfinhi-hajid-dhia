@@ -4,13 +4,13 @@ import { useContext, useState } from "react";
 import ProductsContext from "../../context/ProductsContext";
 import TableItem from "./TableItem";
 import { useSelector } from "react-redux";
-import {gql, useMutation, useQuery} from "@apollo/client"
+import {gql, useMutation, useQuery, useSubscription} from "@apollo/client"
 import { useEffect } from "react";
-import { GetProductList } from "../../helpers/gqlHasura";
+import { GetProductList, SubscriptionProduct } from "../../helpers/gqlHasura";
 
 const Table = () => {
 
-    const {data, loading, error} = useQuery(GetProductList)
+    const { data, loading, error } = useSubscription(SubscriptionProduct)
 
 
     // const { products, setProducts } = useContext(ProductsContext)

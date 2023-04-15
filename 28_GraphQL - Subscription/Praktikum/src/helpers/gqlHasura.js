@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 
 export const GetProductList = gql`
-query MyQuery {
+subsription MyQuery {
     Product {
     category
     name

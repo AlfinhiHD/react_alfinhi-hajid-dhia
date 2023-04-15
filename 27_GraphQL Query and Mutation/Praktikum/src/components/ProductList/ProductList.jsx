@@ -2,12 +2,12 @@ import './ProductList.css'
 import Card from "../Card/Card";
 import BarLoader from "react-spinners/BarLoader";
 
-import { gql, useMutation, useQuery } from "@apollo/client"
+import { gql, useMutation, useQuery, useSubscription } from "@apollo/client"
 import Input from '../../elements/Input/Input';
 import { useState } from 'react';
 import Button from '../../elements/Button/Button';
 
-import { GetSearchProductList } from "../../helpers/gqlHasura"
+import { GetSearchProductList, SubscriptionProduct } from "../../helpers/gqlHasura"
 
 
 const ProductList = () => {
