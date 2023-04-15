@@ -98,6 +98,13 @@ nav {
     font-size: 24px;
 }
 
+.productlist > div > div > label {
+    color: #37517E;
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+}
+
 .newsletter {
     height: 239px;
     background: #F3F5FA;

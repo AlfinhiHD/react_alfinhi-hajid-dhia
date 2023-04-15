@@ -7,36 +7,11 @@ import uuid from 'react-uuid';
 import ProductsContext from "../../context/ProductsContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/products/productsSlice";
-
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../config/firebaseConfig";
 
 import { gql, useQuery, useMutation } from "@apollo/client";
-
-const GetProductList = gql`
-  query ProductQuery {
-    Product {
-      id
-      name
-      price
-      category
-      description
-      image
-      freshness
-    }
-  }
-`;
-
-const InsertProduct = gql`
-  mutation MyMutation($object: Product_insert_input!) {
-    insert_Product_one(object: $object) {
-      id
-      name
-      description
-    }
-  }
-`;
-
+import { InsertProduct, GetProductList } from "../../helpers/gqlHasura";
 
 const Form = ({product}) => {
 
@@ -47,13 +22,6 @@ const Form = ({product}) => {
         refetchQueries: [{ query: GetProductList}],
     });
 
-    // const [products, setProducts] = useState([]);
-    
-    // useEffect(() => {
-    //     if (!loading && !errorSQL) {
-    //       setProducts(dataSQL.Product);
-    //     }
-    //   });
 
     const [percent, setPercent] = useState(0)
 

@@ -5,24 +5,7 @@ import Input from "../../elements/Input/Input";
 import Button from "../../elements/Button/Button";
 import { useState } from "react";
 
-const UpdateProduct = gql`
-    mutation MyMutation($id: String!, $object: Product_set_input!) {
-        update_Product_by_pk(pk_columns: {id: $id}, 
-        _set: $object) {
-          id
-          name
-          price
-        }
-      }
-    `;
-
-const HapusProduct = gql`
-        mutation MyQuery($id: String!) {
-        delete_Product_by_pk(id: $id) {
-            id
-        }
-        }
-    `;
+import { UpdateProduct, HapusProduct } from "../../helpers/gqlHasura"
 
 
 const DetailProduct = () => {
@@ -58,7 +41,7 @@ const DetailProduct = () => {
 
     const { productId } = useParams();
 
-    const GetProductList = gql`
+    const GetProductListbyId = gql`
     query MyQuery {
         Product(where: {id: {_eq: "${productId}"}}) {
           category
@@ -71,7 +54,7 @@ const DetailProduct = () => {
         }
     }`;
 
-    const { data, loading, error } = useQuery(GetProductList, {
+    const { data, loading, error } = useQuery(GetProductListbyId, {
         onCompleted: ({ Product: data }) => setDataEdit({
             productId: data[0].id,
             productName: data[0].name,
@@ -209,7 +192,7 @@ const DetailProduct = () => {
                     <label className="form-label" htmlFor="productImage">
                         Image of Product
                     </label>
-                    <img src={dataEdit.productImage}></img>
+                    <img style={{ width: "17rem", height: "10rem" }} src={dataEdit.productImage}></img>
                     <input
                         className="form-control"
                         name="productImage"

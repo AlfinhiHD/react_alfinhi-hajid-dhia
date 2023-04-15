@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const Card = ({ card }) => {
 
-    console.log(card)
+    // console.log(card)
 
     return (
         <div className="card m-5" style={{ width: "18rem" }}>
