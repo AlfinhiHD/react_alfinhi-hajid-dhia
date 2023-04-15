@@ -6,11 +6,11 @@ import TableItem from "./TableItem";
 import { useSelector } from "react-redux";
 import {gql, useMutation, useQuery, useSubscription} from "@apollo/client"
 import { useEffect } from "react";
-import { GetProductList } from "../../helpers/gqlHasura";
+import { GetProductList, SubscriptionProduct } from "../../helpers/gqlHasura";
 
 const Table = () => {
 
-    const {data, loading, error} = useSubscription(GetProductList)
+    const {data, loading, error} = useSubscription(SubscriptionProduct)
 
 
     // const { products, setProducts } = useContext(ProductsContext)
