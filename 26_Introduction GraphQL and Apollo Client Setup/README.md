@@ -1,4 +1,4 @@
-# (25) Introduction GraphQL and Apollo Client Setup
+# (26) Introduction GraphQL and Apollo Client Setup
 
 ### Apa itu GraphQL?
 GraphQL adalah bahasa kueri (query language) dan juga sistem runtime untuk mengambil dan memanipulasi data dari berbagai sumber oleh aplikasi web atau mobile. Dalam GraphQL, klien mengirimkan permintaan untuk data ke server melalui query yang ditulis dalam format GraphQL. Server kemudian memproses permintaan tersebut dan mengembalikan respons dalam format JSON atau bentuk lain yang diminta klien. GraphQL memiliki kelebihan dalam hal fleksibilitas dan efisiensi, karena memungkinkan klien untuk memilih dan mendapatkan hanya data yang diperlukan dari sumber yang tersedia, serta dapat mempercepat pengembangan aplikasi karena tidak perlu melakukan multiple request ke server.
