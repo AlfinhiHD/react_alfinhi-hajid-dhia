@@ -6,18 +6,7 @@ import TableItem from "./TableItem";
 import { useSelector } from "react-redux";
 import {gql, useMutation, useQuery} from "@apollo/client"
 import { useEffect } from "react";
-
-const GetProductList = gql`
-query MyQuery {
-    Product {
-    category
-    name
-    id
-    image
-    price
-    freshness
-    }
-}`;
+import { GetProductList } from "../../helpers/gqlHasura";
 
 const Table = () => {
 

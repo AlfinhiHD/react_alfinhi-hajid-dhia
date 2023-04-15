@@ -59,12 +59,15 @@ const Form = ({product}) => {
                 [name]: e.target.files[0]
             }))
         }
+        
         else {
             setData((prev) => ({
                 ...prev,
                 [name]: value
             }))
         }
+
+        
 
         if (name === "productName") {
             if (value.length > 10) {

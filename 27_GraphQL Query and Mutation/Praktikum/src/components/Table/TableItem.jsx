@@ -5,6 +5,7 @@ import ProductsContext from "../../context/ProductsContext"
 import { useDispatch } from "react-redux"
 import { deleteProduct, editProduct } from "../../redux/products/productsSlice"
 import { gql, useMutation } from "@apollo/client"
+import { GetProductList, HapusProduct, UpdateProduct } from "../../helpers/gqlHasura"
 
 const TableItem = ({ table }) => {
 
@@ -15,39 +16,6 @@ const TableItem = ({ table }) => {
     const [tempdata, setTempData] = useState({})
 
     // console.log(tempdata)
-
-    const UpdateProduct = gql`
-    mutation MyMutation($id: String!, $object: Product_set_input!) {
-        update_Product_by_pk(pk_columns: {id: $id}, 
-        _set: $object) {
-          id
-          name
-          price
-        }
-      }
-    `;
-
-    const GetProductList = gql`
-    query ProductQuery {
-        Product {
-        id
-        name
-        price
-        category
-        description
-        image
-        freshness
-        }
-    }
-    `;
-
-    const HapusProduct = gql`
-        mutation MyQuery($id: String!) {
-        delete_Product_by_pk(id: $id) {
-            id
-        }
-        }
-    `;
 
     const [hapusProduct] = useMutation(HapusProduct, {
         refetchQueries: [{ query: GetProductList}],
